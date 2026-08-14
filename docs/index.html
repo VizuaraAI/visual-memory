@@ -193,7 +193,7 @@
       <li><a href="#film"><span class="n">9</span>The film</a></li>
       <li><a href="#prior"><span class="n">10</span>Where this sits in prior work</a></li>
       <li><a href="#limits"><span class="n">11</span>What this does not show</a></li>
-      <li><a href="#mamba"><span class="n">12</span>Appendix: how a Mamba2 layer works</a></li>
+      <li><a href="#mamba"><span class="n">12</span>Appendix: the architecture from scratch</a></li>
       <li><a href="#repro"><span class="n">13</span>Reproduce it</a></li>
     </ol>
   </div>
@@ -709,22 +709,51 @@
     answering.</li>
   </ul>
 
-  <h2 id="mamba">Appendix: how a Mamba2 layer actually works</h2>
+  <h2 id="mamba">Appendix: how the architecture actually works</h2>
 
-  <p>This article leans on one piece of machinery, the Mamba2 recurrence, so
-  here it is from the beginning. You do not need this section to follow the
-  argument above, but it explains where the half-life formula comes from.</p>
+  <p>This article leans on one piece of machinery, the Mamba2 recurrence
+  inside a hybrid decoder stack, so here it is from the beginning. You do not
+  need this section to follow the argument above, but it explains where the
+  half-life formula comes from, and where the two memories physically live.</p>
 
-  <p>A Mamba2 layer processes tokens one at a time, and between tokens it
-  carries a single block of numbers called the state, written
-  <span class="num">S</span>. The state is the layer's only memory: whatever
-  the layer wants to remember about everything it has read so far must be
-  stored in those numbers. In Zamba2-VL-7B each layer's state is split into
-  112 independent heads, and each head keeps its own small matrix. With 81
-  layers, the model has 9,072 heads in total.</p>
+  <h3>The stack: 81 layers, two kinds of machinery</h3>
 
-  <p>When the next token <span class="num">x</span> arrives, the head updates
-  its state in two steps, using four quantities:</p>
+  <p>Zamba2-VL-7B is a tower of 81 decoder layers, and a token passes through
+  them in order, bottom to top. Every one of the 81 layers carries a Mamba2
+  mixer with its own recurrent state. At 13 fixed depths (layers 6, 11, 17,
+  23, 29, 35, 41, 47, 53, 59, 65, 71 and 77) the layer additionally runs
+  ordinary attention. This is the whole hybrid design: recurrence everywhere,
+  attention at a thin sprinkling of depths. The two memories the article keeps
+  comparing are exactly these two pieces of hardware. Watch what one token
+  does to each of them.</p>
+</div>
+
+<div class="wide">
+  <figure class="vm">
+    <div class="chartbox" id="anim-hybridstack"></div>
+    <figcaption><b>One token crossing the stack.</b> The pulse visits all 81
+    layers in order. Every layer rewrites its fixed-size recurrent state in
+    place: the state row lights up but never grows. Each of the 13 attention
+    layers appends one key-value entry for the token: those columns grow with
+    every token read and are never rewritten. Everything in the article follows
+    from this asymmetry.</figcaption>
+  </figure>
+</div>
+
+<div class="art">
+  <h3>Inside one layer: a state and four quantities</h3>
+
+  <p>Between tokens, a Mamba2 layer carries a single block of numbers called
+  the state, written <span class="num">S</span>. The state is the layer's only
+  memory: whatever the layer wants to remember about everything it has read so
+  far must be stored in those numbers. In Zamba2-VL-7B each layer's state is
+  split into 112 independent heads, and each head keeps its own
+  64&times;64 matrix; that is 112&nbsp;&times;&nbsp;64&nbsp;&times;&nbsp;64 =
+  458,752 numbers per layer, and 9,072 heads across the 81 layers.</p>
+
+  <p>When the next token <span class="num">x</span> arrives, the layer
+  computes three of its four working quantities <em>from the token itself</em>,
+  and reads the fourth out of the checkpoint:</p>
 
   <ul>
     <li><span class="num">&Delta;</span> (the <em>gate</em>): how much this
@@ -738,6 +767,22 @@
     <li><span class="num">C</span>: <em>what to read</em> out of the state to
     produce this token's output.</li>
   </ul>
+</div>
+
+<div class="wide">
+  <figure class="vm">
+    <div class="chartbox" id="anim-onelayer"></div>
+    <figcaption><b>The dataflow of one layer, one token.</b> The token fans out
+    into the gate &Delta;, the write content B and the readout C; the decay
+    weight A never changes, which is why the forgetting schedule can be
+    computed from the checkpoint alone. The state first shrinks by
+    e<sup>&Delta;A</sup>, then receives the write &Delta;&middot;x&middot;B,
+    and the output is read through C without changing anything.</figcaption>
+  </figure>
+</div>
+
+<div class="art">
+  <h3>The update, token by token</h3>
 
   <p>Step one is forgetting: the whole state is multiplied by
   e<sup>&Delta;A</sup>, a number between zero and one, which shrinks everything
@@ -760,6 +805,8 @@
 </div>
 
 <div class="art">
+  <h3>The half-life: forgetting speed, read off the weights</h3>
+
   <p>Now the key point for this article. Because the shrink factor
   e<sup>&Delta;A</sup> is applied once per token, surviving
   <span class="num">k</span> tokens means being multiplied by it
@@ -1926,6 +1973,219 @@ legend('leg-ctrl',[['no eviction',C.faint],['evict the image’s entries',C.hot]
   if(!REDUCED){
     onSeen(box,()=>setTimeout(()=>activate(1),3800));
   } else { activate(1); }
+})();
+
+/* ============================================================ 14c. hybrid stack */
+(function(){
+  const box=document.getElementById('anim-hybridstack');
+  if(!box) return;
+  const W=960,H=430;
+  const svg=svgIn(box,W,H,720);
+  const ATT=[6,11,17,23,29,35,41,47,53,59,65,71,77];
+  const x0=60,x1=900,n=81,cw=(x1-x0)/n;
+  const MAXTOK=8;
+
+  txt(svg,x0,34,'the 81 decoder layers, in order',{'font-weight':600,fill:C.ink});
+  txt(svg,x0,54,'blue: Mamba2 mixer (all 81)   ·   orange: this layer also runs attention (13)',
+      {fill:C.muted,'font-size':12.5});
+
+  const cells=[];
+  for(let i=0;i<n;i++){
+    const isA=ATT.includes(i);
+    cells.push(el('rect',{x:x0+i*cw+0.8,y:isA?86:94,width:cw-1.6,height:isA?44:28,rx:2,
+      fill:isA?C.shelf:C.slate,opacity:isA?0.72:0.32},svg));
+  }
+  txt(svg,x0,152,'layer 0',{fill:C.faint,'font-size':11.5});
+  txt(svg,x1,152,'layer 80',{fill:C.faint,'font-size':11.5,'text-anchor':'end'});
+  const pulse=el('circle',{cx:x0,cy:74,r:6,fill:C.hot,opacity:0},svg);
+
+  /* the states: rewritten in place, never larger */
+  txt(svg,x0,196,'81 recurrent states',{'font-weight':600,fill:C.slate,'font-size':13.5});
+  txt(svg,x0+190,196,'rewritten in place at every token — the row never grows',
+      {fill:C.muted,'font-size':12.5});
+  const states=[];
+  for(let i=0;i<n;i++){
+    states.push(el('rect',{x:x0+i*cw+0.8,y:206,width:cw-1.6,height:13,rx:2,
+      fill:C.slate,opacity:0.3},svg));
+  }
+
+  /* the caches: one entry appended per token */
+  txt(svg,x0,262,'13 attention caches',{'font-weight':600,fill:C.shelf,'font-size':13.5});
+  txt(svg,x0+190,262,'one key-value entry appended per token — these columns only grow',
+      {fill:C.muted,'font-size':12.5});
+  const cacheUnits=[];   /* cacheUnits[t] = rects added at token t */
+  const cacheY=272, uh=12;
+  const counter=txt(svg,x1,420,'',{'text-anchor':'end',fill:C.ink2,'font-size':13,class:'num'});
+
+  function cacheAdd(t){ /* one unit on every attention column */
+    const row=[];
+    ATT.forEach(i=>{
+      row.push(el('rect',{x:x0+i*cw+0.8,y:cacheY+t*(uh+2),width:cw-1.6,height:uh,rx:2,
+        fill:C.shelf,opacity:0.72},svg));
+    });
+    cacheUnits.push(row);
+  }
+  function cacheReset(){
+    cacheUnits.forEach(r=>r.forEach(u=>u.remove()));
+    cacheUnits.length=0;
+  }
+  function paintCounter(t){
+    counter.textContent=t?`tokens read: ${t} · state size: unchanged · cache entries: 13 × ${t}`:'';
+  }
+
+  if(REDUCED){
+    for(let t=0;t<5;t++) cacheAdd(t);
+    paintCounter(5);
+    return;
+  }
+
+  const PASS=3800;   /* ms for the pulse to cross the stack */
+  let playing=false,t0=0,tok=0;
+  function reset(){ cacheReset(); tok=0; paintCounter(0); }
+  function loop(now){
+    if(!playing) return;
+    const p=((now-t0)/PASS)%1;
+    const passes=Math.floor((now-t0)/PASS);
+    if(passes!==tok){
+      if(passes>MAXTOK){ t0=now; reset(); requestAnimationFrame(loop); return; }
+      tok=passes; cacheAdd(tok-1); paintCounter(tok);
+    }
+    const px=x0+p*(x1-x0);
+    pulse.setAttribute('cx',px);
+    pulse.setAttribute('opacity',0.85);
+    const at=Math.floor((px-x0)/cw);
+    cells.forEach((c,i)=>{
+      const isA=ATT.includes(i);
+      const near=Math.max(0,1-Math.abs(i-at)/2.5);
+      c.setAttribute('opacity',(isA?0.72:0.32)+0.28*near);
+    });
+    states.forEach((s,i)=>{
+      const near=Math.max(0,1-Math.abs(i-at)/2.5);
+      s.setAttribute('opacity',0.3+0.5*near);
+    });
+    requestAnimationFrame(loop);
+  }
+  makeReplay(box,()=>{ t0=performance.now(); reset(); });
+  new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting&&!playing){playing=true;t0=performance.now();reset();requestAnimationFrame(loop);}
+    if(!e.isIntersecting)playing=false;
+  });},{threshold:.3}).observe(box);
+})();
+
+/* ============================================================ 14d. one-layer dataflow */
+(function(){
+  const box=document.getElementById('anim-onelayer');
+  if(!box) return;
+  const W=960,H=440;
+  const svg=svgIn(box,W,H,720);
+
+  /* the token, entering on the left */
+  const tx=70,ty=205;
+  el('rect',{x:tx-26,y:ty-26,width:52,height:52,rx:8,fill:C.slate,opacity:0.9},svg);
+  txt(svg,tx,ty+6,'x',{'text-anchor':'middle',fill:'#fff','font-size':22,class:'num'});
+  txt(svg,tx,ty+48,'the token',{'text-anchor':'middle',fill:C.muted,'font-size':12.5});
+
+  /* the state, centre: 112 heads as a 14x8 grid */
+  const sx=470,sy=95,gw=14,gh=8,cell=15;
+  const ssw=gw*cell,ssh=gh*cell;
+  txt(svg,sx+ssw/2,sy-24,'the state S of this layer',{'text-anchor':'middle','font-weight':600,fill:C.ink});
+  txt(svg,sx+ssw/2,sy-8,'112 heads · each a 64×64 block of numbers',{'text-anchor':'middle',fill:C.muted,'font-size':12});
+  const stateG=el('g',{},svg);
+  el('rect',{x:sx-8,y:sy-2,width:ssw+16,height:ssh+8,rx:10,fill:C.panel,stroke:C.line2,'stroke-width':1.5},stateG);
+  const heads=[];
+  for(let r=0;r<gh;r++)for(let c=0;c<gw;c++){
+    heads.push(el('rect',{x:sx+c*cell+1.5,y:sy+r*cell+2,width:cell-3,height:cell-3,rx:2,
+      fill:C.slate,opacity:0.3},stateG));
+  }
+
+  /* A: the fixed decay dial, attached to the state */
+  const ax=sx+ssw+52,ay=sy+22;
+  el('circle',{cx:ax,cy:ay,r:20,fill:'none',stroke:C.muted,'stroke-width':2.5},svg);
+  txt(svg,ax,ay+6,'A',{'text-anchor':'middle',fill:C.muted,'font-size':17,class:'num'});
+  txt(svg,ax,ay+40,'decay weight',{'text-anchor':'middle',fill:C.muted,'font-size':12});
+  txt(svg,ax,ay+56,'fixed in the checkpoint',{'text-anchor':'middle',fill:C.muted,'font-size':12});
+
+  /* the three token-dependent quantities */
+  const nodes=[
+    {x:280,y:110,label:'Δ',name:'gate — write strength',col:C.hot},
+    {x:280,y:205,label:'B',name:'write content',col:C.slate},
+    {x:280,y:300,label:'C',name:'readout',col:C.good},
+  ];
+  const paths=[],nodeEls=[];
+  nodes.forEach(nd=>{
+    const p=el('path',{d:`M ${tx+30} ${ty} C ${tx+110} ${ty}, ${nd.x-90} ${nd.y}, ${nd.x-24} ${nd.y}`,
+      fill:'none',stroke:nd.col,'stroke-width':2,opacity:0.35},svg);
+    paths.push(p);
+    nodeEls.push(el('circle',{cx:nd.x,cy:nd.y,r:20,fill:'none',stroke:nd.col,'stroke-width':2.5},svg));
+    txt(svg,nd.x,nd.y+6,nd.label,{'text-anchor':'middle',fill:nd.col,'font-size':17,class:'num'});
+    txt(svg,nd.x+32,nd.y+5,nd.name,{fill:C.muted,'font-size':12.5});
+  });
+  /* Δ and B feed the state; C reads out */
+  const inPaths=[
+    el('path',{d:`M ${nodes[0].x+22} ${nodes[0].y} C 380 110, 400 130, ${sx-10} ${sy+30}`,fill:'none',stroke:C.hot,'stroke-width':2,opacity:0.35},svg),
+    el('path',{d:`M ${nodes[1].x+22} ${nodes[1].y} C 390 205, 400 190, ${sx-10} ${sy+70}`,fill:'none',stroke:C.slate,'stroke-width':2,opacity:0.35},svg),
+  ];
+  const outP=el('path',{d:`M ${sx+ssw+10} ${sy+ssh-16} C 760 220, 790 205, 830 205`,fill:'none',stroke:C.good,'stroke-width':2,opacity:0.35},svg);
+  el('path',{d:`M ${nodes[2].x+22} ${nodes[2].y} C 420 300, ${sx+ssw/2-40} ${sy+ssh+40}, ${sx+ssw/2} ${sy+ssh+8}`,
+    fill:'none',stroke:C.good,'stroke-width':2,opacity:0.35,'stroke-dasharray':'5 5'},svg);
+  el('rect',{x:830,y:205-26,width:52,height:52,rx:8,fill:C.good,opacity:0.85},svg);
+  txt(svg,856,211,'y',{'text-anchor':'middle',fill:'#fff','font-size':22,class:'num'});
+  txt(svg,856,253,'the output',{'text-anchor':'middle',fill:C.muted,'font-size':12.5});
+
+  /* phase captions */
+  const ph=[
+    txt(svg,70,392,'1 · the token sets Δ, B and C',{'font-size':14.5,fill:C.muted}),
+    txt(svg,330,392,'2 · S shrinks, then receives Δ·x·B',{'font-size':14.5,fill:C.muted,class:'num'}),
+    txt(svg,720,392,'3 · C reads S out into y',{'font-size':14.5,fill:C.muted}),
+  ];
+  const riders=[0,1,2].map(i=>el('circle',{r:5,fill:nodes[i].col,opacity:0},svg));
+  const rider2=[el('circle',{r:5,fill:C.hot,opacity:0},svg),
+                el('circle',{r:5,fill:C.slate,opacity:0},svg)];
+  const riderOut=el('circle',{r:5,fill:C.good,opacity:0},svg);
+
+  function along(p,t){ const L=p.getTotalLength(); return p.getPointAtLength(L*Math.max(0,Math.min(1,t))); }
+  function setDot(d,p,t,on){
+    const pt=along(p,t);
+    d.setAttribute('cx',pt.x); d.setAttribute('cy',pt.y);
+    d.setAttribute('opacity',on?0.9:0);
+  }
+  function render(phase){ /* phase in [0,3) */
+    ph.forEach((t,i)=>{
+      const active=Math.floor(phase)===i;
+      t.setAttribute('fill',active?[C.hot,C.ink,C.good][i]:C.muted);
+      t.setAttribute('font-weight',active?600:400);
+    });
+    const p1=Math.max(0,Math.min(1,phase));
+    riders.forEach((d,i)=>setDot(d,paths[i],p1,phase<1.15));
+    const p2=Math.max(0,Math.min(1,phase-1));
+    rider2.forEach((d,i)=>setDot(d,inPaths[i],p2,phase>=1&&phase<2.1));
+    /* shrink flash then write flash on the grid */
+    let s=1, litewrite=0;
+    if(phase>=1&&phase<1.5){ s=1-0.06*Math.sin(Math.PI*(phase-1)*2); }
+    if(phase>=1.5&&phase<2){ litewrite=Math.sin(Math.PI*(phase-1.5)*2); }
+    const cx=sx+ssw/2, cy=sy+ssh/2;
+    stateG.setAttribute('transform',`translate(${cx} ${cy}) scale(${s}) translate(${-cx} ${-cy})`);
+    heads.forEach((hd,i)=>{
+      const isW=(i%17)===3;
+      hd.setAttribute('opacity',0.3+(isW?0.55*litewrite:0));
+    });
+    const p3=Math.max(0,Math.min(1,phase-2));
+    setDot(riderOut,outP,p3,phase>=2);
+  }
+  if(REDUCED){ render(2.6); return; }
+  const PERIOD=1600;   /* ms per phase */
+  let playing=false,t0=0;
+  makeReplay(box,()=>{ t0=performance.now(); });
+  function loop(now){
+    if(!playing) return;
+    render(((now-t0)/PERIOD)%3);
+    requestAnimationFrame(loop);
+  }
+  new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting&&!playing){playing=true;t0=performance.now();requestAnimationFrame(loop);}
+    if(!e.isIntersecting)playing=false;
+  });},{threshold:.3}).observe(box);
+  render(0.6);
 })();
 
 /* ============================================================ 15. mamba stepper */
