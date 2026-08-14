@@ -1,0 +1,280 @@
+{
+  "tag": "7b",
+  "chance": 0.125,
+  "strata": {
+    "all": [
+      {
+        "distance": 0,
+        "evicted": false,
+        "accuracy": 0.5938,
+        "p_value": 9.93660297833801e-19,
+        "n": 64
+      },
+      {
+        "distance": 0,
+        "evicted": true,
+        "accuracy": 0.5938,
+        "p_value": 9.93660297833801e-19,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": false,
+        "accuracy": 0.0625,
+        "p_value": 0.966430391542205,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": true,
+        "accuracy": 0.0625,
+        "p_value": 0.966430391542205,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": false,
+        "accuracy": 0.1094,
+        "p_value": 0.7030207416734884,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": true,
+        "accuracy": 0.0938,
+        "p_value": 0.826854760336871,
+        "n": 64
+      }
+    ],
+    "fast": [
+      {
+        "distance": 0,
+        "evicted": false,
+        "accuracy": 0.7969,
+        "p_value": 2.1025456036906326e-34,
+        "n": 64
+      },
+      {
+        "distance": 0,
+        "evicted": true,
+        "accuracy": 0.4219,
+        "p_value": 3.0765681766589336e-09,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": false,
+        "accuracy": 0.5156,
+        "p_value": 5.1289537303635405e-14,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": true,
+        "accuracy": 0.0781,
+        "p_value": 0.9150077905718206,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": false,
+        "accuracy": 0.2188,
+        "p_value": 0.024894987106371596,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": true,
+        "accuracy": 0.0469,
+        "p_value": 0.9900342083810709,
+        "n": 64
+      }
+    ],
+    "middle": [
+      {
+        "distance": 0,
+        "evicted": false,
+        "accuracy": 0.625,
+        "p_value": 8.343663064320878e-21,
+        "n": 64
+      },
+      {
+        "distance": 0,
+        "evicted": true,
+        "accuracy": 0.4375,
+        "p_value": 5.729646984988023e-10,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": false,
+        "accuracy": 0.1719,
+        "p_value": 0.17042529218334793,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": true,
+        "accuracy": 0.1719,
+        "p_value": 0.17042529218334793,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": false,
+        "accuracy": 0.1719,
+        "p_value": 0.17042529218334793,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": true,
+        "accuracy": 0.1875,
+        "p_value": 0.0973494430072058,
+        "n": 64
+      }
+    ],
+    "slow": [
+      {
+        "distance": 0,
+        "evicted": false,
+        "accuracy": 0.625,
+        "p_value": 8.343663064320878e-21,
+        "n": 64
+      },
+      {
+        "distance": 0,
+        "evicted": true,
+        "accuracy": 0.5469,
+        "p_value": 8.042493699779791e-16,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": false,
+        "accuracy": 0.1094,
+        "p_value": 0.7030207416734884,
+        "n": 64
+      },
+      {
+        "distance": 32,
+        "evicted": true,
+        "accuracy": 0.1094,
+        "p_value": 0.7030207416734884,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": false,
+        "accuracy": 0.0625,
+        "p_value": 0.966430391542205,
+        "n": 64
+      },
+      {
+        "distance": 64,
+        "evicted": true,
+        "accuracy": 0.0625,
+        "p_value": 0.966430391542205,
+        "n": 64
+      }
+    ]
+  },
+  "summary": [
+    {
+      "stratum": "all",
+      "distance": 0,
+      "intact": 0.5938,
+      "evicted": 0.5938,
+      "drop_pp": 0.0,
+      "fraction_surviving_eviction": 1.0
+    },
+    {
+      "stratum": "all",
+      "distance": 32,
+      "intact": 0.0625,
+      "evicted": 0.0625,
+      "drop_pp": 0.0,
+      "fraction_surviving_eviction": null
+    },
+    {
+      "stratum": "all",
+      "distance": 64,
+      "intact": 0.1094,
+      "evicted": 0.0938,
+      "drop_pp": 1.6,
+      "fraction_surviving_eviction": null
+    },
+    {
+      "stratum": "fast",
+      "distance": 0,
+      "intact": 0.7969,
+      "evicted": 0.4219,
+      "drop_pp": 37.5,
+      "fraction_surviving_eviction": 0.442
+    },
+    {
+      "stratum": "fast",
+      "distance": 32,
+      "intact": 0.5156,
+      "evicted": 0.0781,
+      "drop_pp": 43.7,
+      "fraction_surviving_eviction": -0.12
+    },
+    {
+      "stratum": "fast",
+      "distance": 64,
+      "intact": 0.2188,
+      "evicted": 0.0469,
+      "drop_pp": 17.2,
+      "fraction_surviving_eviction": -0.833
+    },
+    {
+      "stratum": "middle",
+      "distance": 0,
+      "intact": 0.625,
+      "evicted": 0.4375,
+      "drop_pp": 18.8,
+      "fraction_surviving_eviction": 0.625
+    },
+    {
+      "stratum": "middle",
+      "distance": 32,
+      "intact": 0.1719,
+      "evicted": 0.1719,
+      "drop_pp": 0.0,
+      "fraction_surviving_eviction": 1.0
+    },
+    {
+      "stratum": "middle",
+      "distance": 64,
+      "intact": 0.1719,
+      "evicted": 0.1875,
+      "drop_pp": -1.6,
+      "fraction_surviving_eviction": 1.333
+    },
+    {
+      "stratum": "slow",
+      "distance": 0,
+      "intact": 0.625,
+      "evicted": 0.5469,
+      "drop_pp": 7.8,
+      "fraction_surviving_eviction": 0.844
+    },
+    {
+      "stratum": "slow",
+      "distance": 32,
+      "intact": 0.1094,
+      "evicted": 0.1094,
+      "drop_pp": 0.0,
+      "fraction_surviving_eviction": null
+    },
+    {
+      "stratum": "slow",
+      "distance": 64,
+      "intact": 0.0625,
+      "evicted": 0.0625,
+      "drop_pp": 0.0,
+      "fraction_surviving_eviction": null
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "base": "decay_fine_identity",
+  "distance": 0,
+  "layer": null,
+  "chance": 0.125,
+  "full_signal_accuracy": 0.7167,
+  "half_signal_alpha": 0.7812,
+  "sweep": [
+    {
+      "alpha": 1.0,
+      "accuracy_mean": 0.7167,
+      "accuracy_min": 0.7167,
+      "accuracy_max": 0.7167,
+      "n": 120
+    },
+    {
+      "alpha": 0.7,
+      "accuracy_mean": 0.3111,
+      "accuracy_min": 0.25,
+      "accuracy_max": 0.35,
+      "n": 120
+    },
+    {
+      "alpha": 0.5,
+      "accuracy_mean": 0.2139,
+      "accuracy_min": 0.175,
+      "accuracy_max": 0.2583,
+      "n": 120
+    },
+    {
+      "alpha": 0.35,
+      "accuracy_mean": 0.1611,
+      "accuracy_min": 0.1333,
+      "accuracy_max": 0.2,
+      "n": 120
+    },
+    {
+      "alpha": 0.25,
+      "accuracy_mean": 0.1278,
+      "accuracy_min": 0.0917,
+      "accuracy_max": 0.1583,
+      "n": 120
+    },
+    {
+      "alpha": 0.18,
+      "accuracy_mean": 0.1194,
+      "accuracy_min": 0.0917,
+      "accuracy_max": 0.15,
+      "n": 120
+    },
+    {
+      "alpha": 0.12,
+      "accuracy_mean": 0.1222,
+      "accuracy_min": 0.1,
+      "accuracy_max": 0.1417,
+      "n": 120
+    },
+    {
+      "alpha": 0.08,
+      "accuracy_mean": 0.1333,
+      "accuracy_min": 0.125,
+      "accuracy_max": 0.15,
+      "n": 120
+    },
+    {
+      "alpha": 0.05,
+      "accuracy_mean": 0.1,
+      "accuracy_min": 0.0917,
+      "accuracy_max": 0.1083,
+      "n": 120
+    },
+    {
+      "alpha": 0.037,
+      "accuracy_mean": 0.0861,
+      "accuracy_min": 0.0667,
+      "accuracy_max": 0.1167,
+      "n": 120
+    },
+    {
+      "alpha": 0.02,
+      "accuracy_mean": 0.0972,
+      "accuracy_min": 0.0667,
+      "accuracy_max": 0.1167,
+      "n": 120
+    }
+  ]
+}

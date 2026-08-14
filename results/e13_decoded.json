@@ -1,0 +1,302 @@
+{
+  "tag": "granite",
+  "chance": 0.125,
+  "strata": {
+    "fast": {
+      "predicted_median_half_life": 1.6010453701019287,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "evict_item",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "evict_matched",
+          "accuracy": 0.0781,
+          "p_value": 0.9150077905718206,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.1406,
+          "p_value": 0.40724517377269764,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "evict_item",
+          "accuracy": 0.0781,
+          "p_value": 0.9150077905718206,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "evict_matched",
+          "accuracy": 0.125,
+          "p_value": 0.5564416991739813,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.0938,
+          "p_value": 0.826854760336871,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "evict_item",
+          "accuracy": 0.0781,
+          "p_value": 0.9150077905718206,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "evict_matched",
+          "accuracy": 0.1562,
+          "p_value": 0.27462604008266467,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "intact",
+          "accuracy": 0.1406,
+          "p_value": 0.40724517377269764,
+          "n": 64
+        }
+      ]
+    },
+    "middle": {
+      "predicted_median_half_life": 8.726677894592285,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "evict_item",
+          "accuracy": 0.0938,
+          "p_value": 0.826854760336871,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "evict_matched",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "evict_item",
+          "accuracy": 0.0938,
+          "p_value": 0.826854760336871,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "evict_matched",
+          "accuracy": 0.0781,
+          "p_value": 0.9150077905718206,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.0938,
+          "p_value": 0.826854760336871,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "evict_item",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "evict_matched",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "intact",
+          "accuracy": 0.125,
+          "p_value": 0.5564416991739813,
+          "n": 64
+        }
+      ]
+    },
+    "slow": {
+      "predicted_median_half_life": 151.1703338623047,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "evict_item",
+          "accuracy": 0.25,
+          "p_value": 0.0046545957680525826,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "evict_matched",
+          "accuracy": 0.25,
+          "p_value": 0.0046545957680525826,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.2344,
+          "p_value": 0.011183754264284484,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "evict_item",
+          "accuracy": 0.2188,
+          "p_value": 0.024894987106371596,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "evict_matched",
+          "accuracy": 0.2031,
+          "p_value": 0.05124206197940272,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "evict_item",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "evict_matched",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        },
+        {
+          "distance": 64,
+          "condition": "intact",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        }
+      ]
+    }
+  },
+  "contrasts": [
+    {
+      "stratum": "fast",
+      "distance": 0,
+      "predicted_median_half_life": 1.6010453701019287,
+      "intact": 0.1406,
+      "evict_item": 0.1094,
+      "drop_evict_item": 3.1,
+      "evict_matched": 0.0781,
+      "drop_evict_matched": 6.2
+    },
+    {
+      "stratum": "fast",
+      "distance": 32,
+      "predicted_median_half_life": 1.6010453701019287,
+      "intact": 0.0938,
+      "evict_item": 0.0781,
+      "drop_evict_item": 1.6,
+      "evict_matched": 0.125,
+      "drop_evict_matched": -3.1
+    },
+    {
+      "stratum": "fast",
+      "distance": 64,
+      "predicted_median_half_life": 1.6010453701019287,
+      "intact": 0.1406,
+      "evict_item": 0.0781,
+      "drop_evict_item": 6.2,
+      "evict_matched": 0.1562,
+      "drop_evict_matched": -1.6
+    },
+    {
+      "stratum": "middle",
+      "distance": 0,
+      "predicted_median_half_life": 8.726677894592285,
+      "intact": 0.1094,
+      "evict_item": 0.0938,
+      "drop_evict_item": 1.6,
+      "evict_matched": 0.1094,
+      "drop_evict_matched": 0.0
+    },
+    {
+      "stratum": "middle",
+      "distance": 32,
+      "predicted_median_half_life": 8.726677894592285,
+      "intact": 0.0938,
+      "evict_item": 0.0938,
+      "drop_evict_item": 0.0,
+      "evict_matched": 0.0781,
+      "drop_evict_matched": 1.6
+    },
+    {
+      "stratum": "middle",
+      "distance": 64,
+      "predicted_median_half_life": 8.726677894592285,
+      "intact": 0.125,
+      "evict_item": 0.1094,
+      "drop_evict_item": 1.6,
+      "evict_matched": 0.1094,
+      "drop_evict_matched": 1.6
+    },
+    {
+      "stratum": "slow",
+      "distance": 0,
+      "predicted_median_half_life": 151.1703338623047,
+      "intact": 0.2344,
+      "evict_item": 0.25,
+      "drop_evict_item": -1.6,
+      "evict_matched": 0.25,
+      "drop_evict_matched": -1.6
+    },
+    {
+      "stratum": "slow",
+      "distance": 32,
+      "predicted_median_half_life": 151.1703338623047,
+      "intact": 0.1875,
+      "evict_item": 0.2188,
+      "drop_evict_item": -3.1,
+      "evict_matched": 0.2031,
+      "drop_evict_matched": -1.6
+    },
+    {
+      "stratum": "slow",
+      "distance": 64,
+      "predicted_median_half_life": 151.1703338623047,
+      "intact": 0.1875,
+      "evict_item": 0.1875,
+      "drop_evict_item": 0.0,
+      "evict_matched": 0.1875,
+      "drop_evict_matched": 0.0
+    }
+  ]
+}

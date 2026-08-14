@@ -1,0 +1,28 @@
+{
+  "n_blocks": 25,
+  "n_project_features": 512,
+  "families": {
+    "count": {
+      "target_accuracy": 0.19,
+      "target_p_value": 0.005555700339530889,
+      "target_chance": 0.125,
+      "complexity_accuracy": 0.71,
+      "complexity_p_value": 1.289600682215417e-09,
+      "complexity_chance": 0.5,
+      "complexity_positive_rate": 0.45,
+      "n": 200,
+      "seconds": 345.3
+    },
+    "position": {
+      "target_accuracy": 0.205,
+      "target_p_value": 0.0009525966281209953,
+      "target_chance": 0.125,
+      "complexity_accuracy": 0.745,
+      "complexity_p_value": 1.250347402545379e-12,
+      "complexity_chance": 0.5,
+      "complexity_positive_rate": 0.495,
+      "n": 200,
+      "seconds": 337.8
+    }
+  }
+}

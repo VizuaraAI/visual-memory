@@ -1,0 +1,533 @@
+{
+  "tag": "fine",
+  "families": [
+    {
+      "family": "identity",
+      "n_records": 1440,
+      "per_distance": [
+        {
+          "distance": -1,
+          "is_control": true,
+          "probe_accuracy": 0.125,
+          "p_value": 0.5412558439644811,
+          "n": 120,
+          "zero_shot_accuracy": 0.125
+        },
+        {
+          "distance": 0,
+          "is_control": false,
+          "probe_accuracy": 0.7167,
+          "p_value": 2.2821870887939193e-50,
+          "n": 120,
+          "behaviour_accuracy": 0.9417,
+          "zero_shot_accuracy": 0.1083,
+          "permutation_mean": 0.1133,
+          "permutation_max": 0.1417,
+          "layerwise": [
+            {
+              "layer": 0,
+              "accuracy": 0.5333333333333333,
+              "p_value": 7.613116865641767e-27
+            },
+            {
+              "layer": 1,
+              "accuracy": 0.5833333333333334,
+              "p_value": 1.5627366295393687e-32
+            },
+            {
+              "layer": 2,
+              "accuracy": 0.6,
+              "p_value": 1.517327131494657e-34
+            },
+            {
+              "layer": 3,
+              "accuracy": 0.6083333333333333,
+              "p_value": 1.4202961123628635e-35
+            },
+            {
+              "layer": 4,
+              "accuracy": 0.6416666666666667,
+              "p_value": 7.695928120063497e-40
+            },
+            {
+              "layer": 5,
+              "accuracy": 0.6416666666666667,
+              "p_value": 7.695928120063497e-40
+            },
+            {
+              "layer": 6,
+              "accuracy": 0.8166666666666667,
+              "p_value": 1.0854314089866433e-66
+            },
+            {
+              "layer": 7,
+              "accuracy": 0.7666666666666667,
+              "p_value": 3.6098363965784215e-58
+            },
+            {
+              "layer": 8,
+              "accuracy": 0.7666666666666667,
+              "p_value": 3.6098363965784215e-58
+            },
+            {
+              "layer": 9,
+              "accuracy": 0.7083333333333334,
+              "p_value": 3.934951350129454e-49
+            },
+            {
+              "layer": 10,
+              "accuracy": 0.6833333333333333,
+              "p_value": 1.5924658489398536e-45
+            },
+            {
+              "layer": 11,
+              "accuracy": 0.6833333333333333,
+              "p_value": 1.5924658489398536e-45
+            },
+            {
+              "layer": 12,
+              "accuracy": 0.6833333333333333,
+              "p_value": 1.5924658489398536e-45
+            },
+            {
+              "layer": 13,
+              "accuracy": 0.625,
+              "p_value": 1.1216000333098983e-37
+            },
+            {
+              "layer": 14,
+              "accuracy": 0.7916666666666666,
+              "p_value": 2.475905728402565e-62
+            },
+            {
+              "layer": 15,
+              "accuracy": 0.7833333333333333,
+              "p_value": 6.345059698009467e-61
+            },
+            {
+              "layer": 16,
+              "accuracy": 0.6333333333333333,
+              "p_value": 9.456886526658024e-39
+            },
+            {
+              "layer": 17,
+              "accuracy": 0.525,
+              "p_value": 6.011842020119114e-26
+            },
+            {
+              "layer": 18,
+              "accuracy": 0.44166666666666665,
+              "p_value": 9.276336119759088e-18
+            },
+            {
+              "layer": 19,
+              "accuracy": 0.5416666666666666,
+              "p_value": 9.327546108959564e-28
+            },
+            {
+              "layer": 20,
+              "accuracy": 0.6333333333333333,
+              "p_value": 9.456886526658024e-39
+            },
+            {
+              "layer": 21,
+              "accuracy": 0.6083333333333333,
+              "p_value": 1.4202961123628635e-35
+            },
+            {
+              "layer": 22,
+              "accuracy": 0.49166666666666664,
+              "p_value": 1.6819072732542738e-22
+            },
+            {
+              "layer": 23,
+              "accuracy": 0.5833333333333334,
+              "p_value": 1.5627366295393687e-32
+            },
+            {
+              "layer": 24,
+              "accuracy": 0.6083333333333333,
+              "p_value": 1.4202961123628635e-35
+            },
+            {
+              "layer": 25,
+              "accuracy": 0.6083333333333333,
+              "p_value": 1.4202961123628635e-35
+            },
+            {
+              "layer": 26,
+              "accuracy": 0.5,
+              "p_value": 2.429511034600035e-23
+            },
+            {
+              "layer": 27,
+              "accuracy": 0.5666666666666667,
+              "p_value": 1.4055602924728943e-30
+            },
+            {
+              "layer": 28,
+              "accuracy": 0.4166666666666667,
+              "p_value": 1.3929332571652198e-15
+            },
+            {
+              "layer": 29,
+              "accuracy": 0.49166666666666664,
+              "p_value": 1.6819072732542738e-22
+            },
+            {
+              "layer": 30,
+              "accuracy": 0.575,
+              "p_value": 1.507236507089177e-31
+            },
+            {
+              "layer": 31,
+              "accuracy": 0.5666666666666667,
+              "p_value": 1.4055602924728943e-30
+            },
+            {
+              "layer": 32,
+              "accuracy": 0.5333333333333333,
+              "p_value": 7.613116865641767e-27
+            },
+            {
+              "layer": 33,
+              "accuracy": 0.5333333333333333,
+              "p_value": 7.613116865641767e-27
+            },
+            {
+              "layer": 34,
+              "accuracy": 0.65,
+              "p_value": 6.04259781572137e-41
+            },
+            {
+              "layer": 35,
+              "accuracy": 0.49166666666666664,
+              "p_value": 1.6819072732542738e-22
+            },
+            {
+              "layer": 36,
+              "accuracy": 0.55,
+              "p_value": 1.1055617954260552e-28
+            },
+            {
+              "layer": 37,
+              "accuracy": 0.65,
+              "p_value": 6.04259781572137e-41
+            },
+            {
+              "layer": 38,
+              "accuracy": 0.5583333333333333,
+              "p_value": 1.2675413905297564e-29
+            },
+            {
+              "layer": 39,
+              "accuracy": 0.5833333333333334,
+              "p_value": 1.5627366295393687e-32
+            },
+            {
+              "layer": 40,
+              "accuracy": 0.4666666666666667,
+              "p_value": 4.581487664681692e-20
+            },
+            {
+              "layer": 41,
+              "accuracy": 0.5166666666666667,
+              "p_value": 4.59339778321499e-25
+            },
+            {
+              "layer": 42,
+              "accuracy": 0.575,
+              "p_value": 1.507236507089177e-31
+            },
+            {
+              "layer": 43,
+              "accuracy": 0.6583333333333333,
+              "p_value": 4.5758428907078897e-42
+            },
+            {
+              "layer": 44,
+              "accuracy": 0.6083333333333333,
+              "p_value": 1.4202961123628635e-35
+            },
+            {
+              "layer": 45,
+              "accuracy": 0.6416666666666667,
+              "p_value": 7.695928120063497e-40
+            },
+            {
+              "layer": 46,
+              "accuracy": 0.6166666666666667,
+              "p_value": 1.2843151407716702e-36
+            },
+            {
+              "layer": 47,
+              "accuracy": 0.6416666666666667,
+              "p_value": 7.695928120063497e-40
+            },
+            {
+              "layer": 48,
+              "accuracy": 0.6583333333333333,
+              "p_value": 4.5758428907078897e-42
+            },
+            {
+              "layer": 49,
+              "accuracy": 0.6583333333333333,
+              "p_value": 4.5758428907078897e-42
+            },
+            {
+              "layer": 50,
+              "accuracy": 0.6,
+              "p_value": 1.517327131494657e-34
+            },
+            {
+              "layer": 51,
+              "accuracy": 0.725,
+              "p_value": 1.2710997178820466e-51
+            },
+            {
+              "layer": 52,
+              "accuracy": 0.8,
+              "p_value": 9.193283735878893e-64
+            },
+            {
+              "layer": 53,
+              "accuracy": 0.5833333333333334,
+              "p_value": 1.5627366295393687e-32
+            },
+            {
+              "layer": 54,
+              "accuracy": 0.8166666666666667,
+              "p_value": 1.0854314089866433e-66
+            },
+            {
+              "layer": 55,
+              "accuracy": 0.625,
+              "p_value": 1.1216000333098983e-37
+            },
+            {
+              "layer": 56,
+              "accuracy": 0.8833333333333333,
+              "p_value": 1.9699291193893593e-79
+            },
+            {
+              "layer": 57,
+              "accuracy": 0.8333333333333334,
+              "p_value": 1.0300750573726979e-69
+            },
+            {
+              "layer": 58,
+              "accuracy": 0.7833333333333333,
+              "p_value": 6.345059698009467e-61
+            },
+            {
+              "layer": 59,
+              "accuracy": 0.8166666666666667,
+              "p_value": 1.0854314089866433e-66
+            },
+            {
+              "layer": 60,
+              "accuracy": 0.6833333333333333,
+              "p_value": 1.5924658489398536e-45
+            },
+            {
+              "layer": 61,
+              "accuracy": 0.8916666666666667,
+              "p_value": 3.6765169473763007e-81
+            },
+            {
+              "layer": 62,
+              "accuracy": 0.9166666666666666,
+              "p_value": 1.4142065169688133e-86
+            },
+            {
+              "layer": 63,
+              "accuracy": 0.8583333333333333,
+              "p_value": 1.926088150978328e-74
+            },
+            {
+              "layer": 64,
+              "accuracy": 0.925,
+              "p_value": 1.8175297332995382e-88
+            },
+            {
+              "layer": 65,
+              "accuracy": 0.5416666666666666,
+              "p_value": 9.327546108959564e-28
+            },
+            {
+              "layer": 66,
+              "accuracy": 0.8666666666666667,
+              "p_value": 4.4904705365312213e-76
+            },
+            {
+              "layer": 67,
+              "accuracy": 0.85,
+              "p_value": 7.727793616691981e-73
+            },
+            {
+              "layer": 68,
+              "accuracy": 0.9166666666666666,
+              "p_value": 1.4142065169688133e-86
+            },
+            {
+              "layer": 69,
+              "accuracy": 0.9166666666666666,
+              "p_value": 1.4142065169688133e-86
+            },
+            {
+              "layer": 70,
+              "accuracy": 0.9,
+              "p_value": 6.312638678620399e-83
+            },
+            {
+              "layer": 71,
+              "accuracy": 0.9,
+              "p_value": 6.312638678620399e-83
+            },
+            {
+              "layer": 72,
+              "accuracy": 0.8916666666666667,
+              "p_value": 3.6765169473763007e-81
+            },
+            {
+              "layer": 73,
+              "accuracy": 0.9,
+              "p_value": 6.312638678620399e-83
+            },
+            {
+              "layer": 74,
+              "accuracy": 0.85,
+              "p_value": 7.727793616691981e-73
+            },
+            {
+              "layer": 75,
+              "accuracy": 0.8833333333333333,
+              "p_value": 1.9699291193893593e-79
+            },
+            {
+              "layer": 76,
+              "accuracy": 0.8666666666666667,
+              "p_value": 4.4904705365312213e-76
+            },
+            {
+              "layer": 77,
+              "accuracy": 0.825,
+              "p_value": 3.4396269947504945e-68
+            },
+            {
+              "layer": 78,
+              "accuracy": 0.7916666666666666,
+              "p_value": 2.475905728402565e-62
+            },
+            {
+              "layer": 79,
+              "accuracy": 0.8666666666666667,
+              "p_value": 4.4904705365312213e-76
+            },
+            {
+              "layer": 80,
+              "accuracy": 0.8416666666666667,
+              "p_value": 2.9089210668713356e-71
+            }
+          ]
+        },
+        {
+          "distance": 1,
+          "is_control": false,
+          "probe_accuracy": 0.6,
+          "p_value": 1.517327131494657e-34,
+          "n": 120,
+          "behaviour_accuracy": 0.9667,
+          "zero_shot_accuracy": 0.1583
+        },
+        {
+          "distance": 2,
+          "is_control": false,
+          "probe_accuracy": 0.5917,
+          "p_value": 1.5663244482723095e-33,
+          "n": 120,
+          "behaviour_accuracy": 0.975,
+          "zero_shot_accuracy": 0.1917
+        },
+        {
+          "distance": 4,
+          "is_control": false,
+          "probe_accuracy": 0.4167,
+          "p_value": 1.3929332571652198e-15,
+          "n": 120,
+          "behaviour_accuracy": 0.9667,
+          "zero_shot_accuracy": 0.1667
+        },
+        {
+          "distance": 8,
+          "is_control": false,
+          "probe_accuracy": 0.35,
+          "p_value": 1.9908054586408147e-10,
+          "n": 120,
+          "behaviour_accuracy": 0.975,
+          "zero_shot_accuracy": 0.1417
+        },
+        {
+          "distance": 12,
+          "is_control": false,
+          "probe_accuracy": 0.3,
+          "p_value": 3.301052598568588e-07,
+          "n": 120,
+          "behaviour_accuracy": 0.9667,
+          "zero_shot_accuracy": 0.1583
+        },
+        {
+          "distance": 16,
+          "is_control": false,
+          "probe_accuracy": 0.2417,
+          "p_value": 0.0003298001414446014,
+          "n": 120,
+          "behaviour_accuracy": 0.975,
+          "zero_shot_accuracy": 0.1417
+        },
+        {
+          "distance": 24,
+          "is_control": false,
+          "probe_accuracy": 0.2917,
+          "p_value": 9.967481676296858e-07,
+          "n": 120,
+          "behaviour_accuracy": 0.9583,
+          "zero_shot_accuracy": 0.1083
+        },
+        {
+          "distance": 32,
+          "is_control": false,
+          "probe_accuracy": 0.2083,
+          "p_value": 0.006846175538109356,
+          "n": 120,
+          "behaviour_accuracy": 0.95,
+          "zero_shot_accuracy": 0.125
+        },
+        {
+          "distance": 48,
+          "is_control": false,
+          "probe_accuracy": 0.2583,
+          "p_value": 5.6053847802331946e-05,
+          "n": 120,
+          "behaviour_accuracy": 0.975,
+          "zero_shot_accuracy": 0.1667
+        },
+        {
+          "distance": 64,
+          "is_control": false,
+          "probe_accuracy": 0.2167,
+          "p_value": 0.003425088578058657,
+          "n": 120,
+          "behaviour_accuracy": 0.9833,
+          "zero_shot_accuracy": 0.125
+        }
+      ],
+      "decay": {
+        "half_life_tokens": 26.9,
+        "tau_tokens": 38.9,
+        "amplitude_at_zero": 0.3391
+      },
+      "chance": 0.125
+    }
+  ]
+}

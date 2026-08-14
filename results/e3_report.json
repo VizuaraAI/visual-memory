@@ -1,0 +1,42 @@
+{
+  "n_blocks": 15,
+  "n_project_features": 128,
+  "trials_per_family": {
+    "identity": 120,
+    "count": 120,
+    "position": 120
+  },
+  "families": {
+    "identity": {
+      "behaviour_accuracy": 0.9417,
+      "behaviour": "113/120",
+      "probe_accuracy": 0.725,
+      "probe_p_value": 1.2710997178820466e-51,
+      "permutation_mean": 0.1,
+      "pre_image_accuracy": 0.125,
+      "chance": 0.125,
+      "seconds": 422.9
+    },
+    "count": {
+      "behaviour_accuracy": 0.3083,
+      "behaviour": "37/120",
+      "probe_accuracy": 0.1083,
+      "probe_p_value": 0.7490620208045173,
+      "permutation_mean": 0.1194,
+      "pre_image_accuracy": 0.125,
+      "chance": 0.125,
+      "seconds": 424.0
+    },
+    "position": {
+      "behaviour_accuracy": 0.5083,
+      "behaviour": "61/120",
+      "probe_accuracy": 0.15,
+      "probe_p_value": 0.2393895909908306,
+      "permutation_mean": 0.1028,
+      "pre_image_accuracy": 0.125,
+      "chance": 0.125,
+      "seconds": 458.6
+    }
+  },
+  "cuda_max_mem_gb": 28.42
+}

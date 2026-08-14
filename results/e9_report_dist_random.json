@@ -1,0 +1,102 @@
+{
+  "model_id": "Zyphra/Zamba2-VL-7B",
+  "strategy": "random",
+  "distances": [
+    0,
+    32,
+    128,
+    512
+  ],
+  "retentions": [
+    1.0,
+    0.25,
+    0.05,
+    0.0
+  ],
+  "n_trials": 48,
+  "n_records": 768,
+  "failures": 0,
+  "by_retention": {
+    "d0_r1.0": {
+      "n": 48,
+      "hits": 47,
+      "accuracy": 0.9792
+    },
+    "d0_r0.25": {
+      "n": 48,
+      "hits": 44,
+      "accuracy": 0.9167
+    },
+    "d0_r0.05": {
+      "n": 48,
+      "hits": 42,
+      "accuracy": 0.875
+    },
+    "d0_r0.0": {
+      "n": 48,
+      "hits": 31,
+      "accuracy": 0.6458
+    },
+    "d32_r1.0": {
+      "n": 48,
+      "hits": 46,
+      "accuracy": 0.9583
+    },
+    "d32_r0.25": {
+      "n": 48,
+      "hits": 46,
+      "accuracy": 0.9583
+    },
+    "d32_r0.05": {
+      "n": 48,
+      "hits": 37,
+      "accuracy": 0.7708
+    },
+    "d32_r0.0": {
+      "n": 48,
+      "hits": 18,
+      "accuracy": 0.375
+    },
+    "d128_r1.0": {
+      "n": 48,
+      "hits": 48,
+      "accuracy": 1.0
+    },
+    "d128_r0.25": {
+      "n": 48,
+      "hits": 46,
+      "accuracy": 0.9583
+    },
+    "d128_r0.05": {
+      "n": 48,
+      "hits": 36,
+      "accuracy": 0.75
+    },
+    "d128_r0.0": {
+      "n": 48,
+      "hits": 15,
+      "accuracy": 0.3125
+    },
+    "d512_r1.0": {
+      "n": 48,
+      "hits": 47,
+      "accuracy": 0.9792
+    },
+    "d512_r0.25": {
+      "n": 48,
+      "hits": 44,
+      "accuracy": 0.9167
+    },
+    "d512_r0.05": {
+      "n": 48,
+      "hits": 31,
+      "accuracy": 0.6458
+    },
+    "d512_r0.0": {
+      "n": 48,
+      "hits": 11,
+      "accuracy": 0.2292
+    }
+  },
+  "minutes": 163.2
+}

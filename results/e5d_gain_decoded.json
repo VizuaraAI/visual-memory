@@ -1,0 +1,142 @@
+{
+  "tag": "gain",
+  "chance": 0.125,
+  "strata": {
+    "fast": {
+      "predicted_median_half_life": 2.298658609390259,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.3906,
+          "p_value": 7.363865567954148e-08,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "prefill_matched",
+          "accuracy": 0.625,
+          "p_value": 8.343663064320878e-21,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.2188,
+          "p_value": 0.024894987106371596,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.2188,
+          "p_value": 0.024894987106371596,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "prefill_matched",
+          "accuracy": 0.3438,
+          "p_value": 5.362884658832415e-06,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.2031,
+          "p_value": 0.05124206197940272,
+          "n": 64
+        }
+      ]
+    },
+    "slow": {
+      "predicted_median_half_life": 16.351898193359375,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.4844,
+          "p_value": 2.562428228317912e-12,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "prefill_matched",
+          "accuracy": 0.625,
+          "p_value": 8.343663064320878e-21,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.3438,
+          "p_value": 5.362884658832415e-06,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "prefill_matched",
+          "accuracy": 0.3594,
+          "p_value": 1.3695969378119615e-06,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1406,
+          "p_value": 0.40724517377269764,
+          "n": 64
+        }
+      ]
+    }
+  },
+  "contrasts": [
+    {
+      "stratum": "fast",
+      "distance": 0,
+      "predicted_median_half_life": 2.298658609390259,
+      "intact": 0.3906,
+      "prefill_matched": 0.625,
+      "drop_prefill_matched": -23.4,
+      "visual_all": 0.2188,
+      "drop_visual_all": 17.2
+    },
+    {
+      "stratum": "fast",
+      "distance": 32,
+      "predicted_median_half_life": 2.298658609390259,
+      "intact": 0.2188,
+      "prefill_matched": 0.3438,
+      "drop_prefill_matched": -12.5,
+      "visual_all": 0.2031,
+      "drop_visual_all": 1.6
+    },
+    {
+      "stratum": "slow",
+      "distance": 0,
+      "predicted_median_half_life": 16.351898193359375,
+      "intact": 0.4844,
+      "prefill_matched": 0.625,
+      "drop_prefill_matched": -14.1,
+      "visual_all": 0.3438,
+      "drop_visual_all": 14.1
+    },
+    {
+      "stratum": "slow",
+      "distance": 32,
+      "predicted_median_half_life": 16.351898193359375,
+      "intact": 0.1875,
+      "prefill_matched": 0.3594,
+      "drop_prefill_matched": -17.2,
+      "visual_all": 0.1406,
+      "drop_visual_all": 4.7
+    }
+  ]
+}

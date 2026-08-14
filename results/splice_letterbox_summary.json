@@ -1,0 +1,94 @@
+{
+  "n_pairs_per_family": 30,
+  "distance": 0,
+  "image_size": 560,
+  "dropped_length_mismatch": 0,
+  "recurrent_swap_took_effect": "90/90",
+  "swap_check_examples": [
+    {
+      "family": "identity",
+      "changed": true,
+      "before": 98.15,
+      "after": 97.81
+    },
+    {
+      "family": "identity",
+      "changed": true,
+      "before": 96.52,
+      "after": 97.5
+    },
+    {
+      "family": "identity",
+      "changed": true,
+      "before": 96.74,
+      "after": 97.41
+    }
+  ],
+  "identity": {
+    "none": {
+      "follows_host": 17,
+      "follows_donor": 0,
+      "n": 30
+    },
+    "recurrent": {
+      "follows_host": 19,
+      "follows_donor": 0,
+      "n": 30
+    },
+    "attention": {
+      "follows_host": 0,
+      "follows_donor": 15,
+      "n": 30
+    },
+    "both": {
+      "follows_host": 0,
+      "follows_donor": 14,
+      "n": 30
+    }
+  },
+  "count": {
+    "none": {
+      "follows_host": 3,
+      "follows_donor": 2,
+      "n": 30
+    },
+    "recurrent": {
+      "follows_host": 3,
+      "follows_donor": 3,
+      "n": 30
+    },
+    "attention": {
+      "follows_host": 2,
+      "follows_donor": 1,
+      "n": 30
+    },
+    "both": {
+      "follows_host": 2,
+      "follows_donor": 2,
+      "n": 30
+    }
+  },
+  "position": {
+    "none": {
+      "follows_host": 6,
+      "follows_donor": 1,
+      "n": 30
+    },
+    "recurrent": {
+      "follows_host": 5,
+      "follows_donor": 0,
+      "n": 30
+    },
+    "attention": {
+      "follows_host": 0,
+      "follows_donor": 1,
+      "n": 30
+    },
+    "both": {
+      "follows_host": 1,
+      "follows_donor": 1,
+      "n": 30
+    }
+  },
+  "minutes": 21.9
+}

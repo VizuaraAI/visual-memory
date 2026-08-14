@@ -1,0 +1,150 @@
+{
+  "tag": "7b",
+  "chance": 0.125,
+  "strata": {
+    "fast": {
+      "predicted_median_half_life": 1.9820845127105713,
+      "measured_half_life": null,
+      "per_distance": [
+        {
+          "distance": 0,
+          "accuracy": 0.875,
+          "p_value": 9.759710584188139e-78,
+          "n": 120
+        },
+        {
+          "distance": 2,
+          "accuracy": 0.8583,
+          "p_value": 1.926088150978328e-74,
+          "n": 120
+        },
+        {
+          "distance": 4,
+          "accuracy": 0.7833,
+          "p_value": 6.345059698009467e-61,
+          "n": 120
+        },
+        {
+          "distance": 8,
+          "accuracy": 0.775,
+          "p_value": 1.549426406002889e-59,
+          "n": 120
+        },
+        {
+          "distance": 16,
+          "accuracy": 0.7333,
+          "p_value": 6.79367954156856e-53,
+          "n": 120
+        },
+        {
+          "distance": 32,
+          "accuracy": 0.6083,
+          "p_value": 1.4202961123628635e-35,
+          "n": 120
+        },
+        {
+          "distance": 64,
+          "accuracy": 0.6167,
+          "p_value": 1.2843151407716702e-36,
+          "n": 120
+        }
+      ]
+    },
+    "middle": {
+      "predicted_median_half_life": 6.6422438621521,
+      "measured_half_life": 3.81,
+      "per_distance": [
+        {
+          "distance": 0,
+          "accuracy": 0.8167,
+          "p_value": 1.0854314089866433e-66,
+          "n": 120
+        },
+        {
+          "distance": 2,
+          "accuracy": 0.675,
+          "p_value": 2.3501394979385955e-44,
+          "n": 120
+        },
+        {
+          "distance": 4,
+          "accuracy": 0.45,
+          "p_value": 1.6328613719105333e-18,
+          "n": 120
+        },
+        {
+          "distance": 8,
+          "accuracy": 0.3583,
+          "p_value": 5.098101943246059e-11,
+          "n": 120
+        },
+        {
+          "distance": 16,
+          "accuracy": 0.2083,
+          "p_value": 0.006846175538109356,
+          "n": 120
+        },
+        {
+          "distance": 32,
+          "accuracy": 0.25,
+          "p_value": 0.00013881435518255336,
+          "n": 120
+        },
+        {
+          "distance": 64,
+          "accuracy": 0.15,
+          "p_value": 0.2393895909908306,
+          "n": 120
+        }
+      ]
+    },
+    "slow": {
+      "predicted_median_half_life": 28.956981658935547,
+      "measured_half_life": 3.12,
+      "per_distance": [
+        {
+          "distance": 0,
+          "accuracy": 0.6833,
+          "p_value": 1.5924658489398536e-45,
+          "n": 120
+        },
+        {
+          "distance": 2,
+          "accuracy": 0.525,
+          "p_value": 6.011842020119114e-26,
+          "n": 120
+        },
+        {
+          "distance": 4,
+          "accuracy": 0.3083,
+          "p_value": 1.0524554890175132e-07,
+          "n": 120
+        },
+        {
+          "distance": 8,
+          "accuracy": 0.2083,
+          "p_value": 0.006846175538109356,
+          "n": 120
+        },
+        {
+          "distance": 16,
+          "accuracy": 0.175,
+          "p_value": 0.06923117069216565,
+          "n": 120
+        },
+        {
+          "distance": 32,
+          "accuracy": 0.225,
+          "p_value": 0.001639356373636783,
+          "n": 120
+        },
+        {
+          "distance": 64,
+          "accuracy": 0.1667,
+          "p_value": 0.10980734878384767,
+          "n": 120
+        }
+      ]
+    }
+  }
+}

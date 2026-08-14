@@ -1,0 +1,65 @@
+{
+  "model_id": "ibm-granite/granite-4.0-h-tiny",
+  "n_layers": 40,
+  "n_mamba_layers": 36,
+  "attention_layers": [
+    5,
+    15,
+    25,
+    35
+  ],
+  "n_heads": 48,
+  "state_dim": 128,
+  "n_groups": 1,
+  "half_life": {
+    "n_heads_total": 1728,
+    "n_finite": 1728,
+    "median": 8.726677894592285,
+    "quantiles": {
+      "q05": 0.7699462175369263,
+      "q25": 2.420776844024658,
+      "q50": 8.743927955627441,
+      "q75": 59.91648864746094,
+      "q95": 363.6870422363281
+    },
+    "fraction_below_32": 0.6770833134651184,
+    "fraction_32_to_512": 0.296875,
+    "fraction_above_512": 0.02604166604578495
+  },
+  "strata": {
+    "fast": {
+      "n_heads": 576,
+      "median_half_life": 1.6010453701019287,
+      "min_half_life": 0.2056298553943634,
+      "max_half_life": 3.568742275238037,
+      "layers_with_no_heads": 1,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 43
+    },
+    "middle": {
+      "n_heads": 576,
+      "median_half_life": 8.726677894592285,
+      "min_half_life": 3.5757293701171875,
+      "max_half_life": 30.15595054626465,
+      "layers_with_no_heads": 0,
+      "heads_per_layer_min": 3,
+      "heads_per_layer_max": 44
+    },
+    "slow": {
+      "n_heads": 576,
+      "median_half_life": 151.1703338623047,
+      "min_half_life": 30.31022834777832,
+      "max_half_life": 911.1246948242188,
+      "layers_with_no_heads": 1,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 43
+    }
+  },
+  "distances": [
+    0,
+    32,
+    64
+  ],
+  "n_records": 576,
+  "minutes": 23.6
+}

@@ -1,0 +1,449 @@
+{
+  "tag": "seeds",
+  "chance": 0.125,
+  "strata": {
+    "fast_s0": {
+      "predicted_median_half_life": 1.9820845127105713,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.625,
+          "p_value": 8.343663064320878e-21,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.3281,
+          "p_value": 1.9664426729463638e-05,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.0781,
+          "p_value": 0.9150077905718206,
+          "n": 64
+        }
+      ]
+    },
+    "fast_s1": {
+      "predicted_median_half_life": 1.9820845127105713,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.6406,
+          "p_value": 6.93689191886838e-22,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.2031,
+          "p_value": 0.05124206197940272,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.2969,
+          "p_value": 0.00021609394016926898,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        }
+      ]
+    },
+    "fast_s2": {
+      "predicted_median_half_life": 1.9820845127105713,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.6406,
+          "p_value": 6.93689191886838e-22,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.1875,
+          "p_value": 0.0973494430072058,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.3125,
+          "p_value": 6.744457864725338e-05,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        }
+      ]
+    },
+    "middle_s0": {
+      "predicted_median_half_life": 6.6422438621521,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.3438,
+          "p_value": 5.362884658832415e-06,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.2812,
+          "p_value": 0.0006458844854394469,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.1406,
+          "p_value": 0.40724517377269764,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1406,
+          "p_value": 0.40724517377269764,
+          "n": 64
+        }
+      ]
+    },
+    "middle_s1": {
+      "predicted_median_half_life": 6.6422438621521,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.3906,
+          "p_value": 7.363865567954148e-08,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.2969,
+          "p_value": 0.00021609394016926898,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.125,
+          "p_value": 0.5564416991739813,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.125,
+          "p_value": 0.5564416991739813,
+          "n": 64
+        }
+      ]
+    },
+    "middle_s2": {
+      "predicted_median_half_life": 6.6422438621521,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.4062,
+          "p_value": 1.552870126540303e-08,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.2969,
+          "p_value": 0.00021609394016926898,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.1094,
+          "p_value": 0.7030207416734884,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.0938,
+          "p_value": 0.826854760336871,
+          "n": 64
+        }
+      ]
+    },
+    "slow_s0": {
+      "predicted_median_half_life": 28.956981658935547,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.3438,
+          "p_value": 5.362884658832415e-06,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.3438,
+          "p_value": 5.362884658832415e-06,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.125,
+          "p_value": 0.5564416991739813,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1406,
+          "p_value": 0.40724517377269764,
+          "n": 64
+        }
+      ]
+    },
+    "slow_s1": {
+      "predicted_median_half_life": 28.956981658935547,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.4219,
+          "p_value": 3.0765681766589336e-09,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.3594,
+          "p_value": 1.3695969378119615e-06,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.1562,
+          "p_value": 0.27462604008266467,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1562,
+          "p_value": 0.27462604008266467,
+          "n": 64
+        }
+      ]
+    },
+    "slow_s2": {
+      "predicted_median_half_life": 28.956981658935547,
+      "per_condition": [
+        {
+          "distance": 0,
+          "condition": "intact",
+          "accuracy": 0.4375,
+          "p_value": 5.729646984988023e-10,
+          "n": 64
+        },
+        {
+          "distance": 0,
+          "condition": "visual_all",
+          "accuracy": 0.3438,
+          "p_value": 5.362884658832415e-06,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "intact",
+          "accuracy": 0.1719,
+          "p_value": 0.17042529218334793,
+          "n": 64
+        },
+        {
+          "distance": 32,
+          "condition": "visual_all",
+          "accuracy": 0.1719,
+          "p_value": 0.17042529218334793,
+          "n": 64
+        }
+      ]
+    }
+  },
+  "contrasts": [
+    {
+      "stratum": "fast_s0",
+      "distance": 0,
+      "predicted_median_half_life": 1.9820845127105713,
+      "intact": 0.625,
+      "visual_all": 0.1875,
+      "drop_visual_all": 43.8
+    },
+    {
+      "stratum": "fast_s0",
+      "distance": 32,
+      "predicted_median_half_life": 1.9820845127105713,
+      "intact": 0.3281,
+      "visual_all": 0.0781,
+      "drop_visual_all": 25.0
+    },
+    {
+      "stratum": "fast_s1",
+      "distance": 0,
+      "predicted_median_half_life": 1.9820845127105713,
+      "intact": 0.6406,
+      "visual_all": 0.2031,
+      "drop_visual_all": 43.7
+    },
+    {
+      "stratum": "fast_s1",
+      "distance": 32,
+      "predicted_median_half_life": 1.9820845127105713,
+      "intact": 0.2969,
+      "visual_all": 0.1094,
+      "drop_visual_all": 18.8
+    },
+    {
+      "stratum": "fast_s2",
+      "distance": 0,
+      "predicted_median_half_life": 1.9820845127105713,
+      "intact": 0.6406,
+      "visual_all": 0.1875,
+      "drop_visual_all": 45.3
+    },
+    {
+      "stratum": "fast_s2",
+      "distance": 32,
+      "predicted_median_half_life": 1.9820845127105713,
+      "intact": 0.3125,
+      "visual_all": 0.1094,
+      "drop_visual_all": 20.3
+    },
+    {
+      "stratum": "middle_s0",
+      "distance": 0,
+      "predicted_median_half_life": 6.6422438621521,
+      "intact": 0.3438,
+      "visual_all": 0.2812,
+      "drop_visual_all": 6.3
+    },
+    {
+      "stratum": "middle_s0",
+      "distance": 32,
+      "predicted_median_half_life": 6.6422438621521,
+      "intact": 0.1406,
+      "visual_all": 0.1406,
+      "drop_visual_all": 0.0
+    },
+    {
+      "stratum": "middle_s1",
+      "distance": 0,
+      "predicted_median_half_life": 6.6422438621521,
+      "intact": 0.3906,
+      "visual_all": 0.2969,
+      "drop_visual_all": 9.4
+    },
+    {
+      "stratum": "middle_s1",
+      "distance": 32,
+      "predicted_median_half_life": 6.6422438621521,
+      "intact": 0.125,
+      "visual_all": 0.125,
+      "drop_visual_all": 0.0
+    },
+    {
+      "stratum": "middle_s2",
+      "distance": 0,
+      "predicted_median_half_life": 6.6422438621521,
+      "intact": 0.4062,
+      "visual_all": 0.2969,
+      "drop_visual_all": 10.9
+    },
+    {
+      "stratum": "middle_s2",
+      "distance": 32,
+      "predicted_median_half_life": 6.6422438621521,
+      "intact": 0.1094,
+      "visual_all": 0.0938,
+      "drop_visual_all": 1.6
+    },
+    {
+      "stratum": "slow_s0",
+      "distance": 0,
+      "predicted_median_half_life": 28.956981658935547,
+      "intact": 0.3438,
+      "visual_all": 0.3438,
+      "drop_visual_all": 0.0
+    },
+    {
+      "stratum": "slow_s0",
+      "distance": 32,
+      "predicted_median_half_life": 28.956981658935547,
+      "intact": 0.125,
+      "visual_all": 0.1406,
+      "drop_visual_all": -1.6
+    },
+    {
+      "stratum": "slow_s1",
+      "distance": 0,
+      "predicted_median_half_life": 28.956981658935547,
+      "intact": 0.4219,
+      "visual_all": 0.3594,
+      "drop_visual_all": 6.2
+    },
+    {
+      "stratum": "slow_s1",
+      "distance": 32,
+      "predicted_median_half_life": 28.956981658935547,
+      "intact": 0.1562,
+      "visual_all": 0.1562,
+      "drop_visual_all": 0.0
+    },
+    {
+      "stratum": "slow_s2",
+      "distance": 0,
+      "predicted_median_half_life": 28.956981658935547,
+      "intact": 0.4375,
+      "visual_all": 0.3438,
+      "drop_visual_all": 9.4
+    },
+    {
+      "stratum": "slow_s2",
+      "distance": 32,
+      "predicted_median_half_life": 28.956981658935547,
+      "intact": 0.1719,
+      "visual_all": 0.1719,
+      "drop_visual_all": 0.0
+    }
+  ]
+}

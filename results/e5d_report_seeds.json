@@ -1,0 +1,49 @@
+{
+  "model_id": "Zyphra/Zamba2-VL-7B",
+  "conditions": [
+    "intact",
+    "visual_all"
+  ],
+  "distances": [
+    0,
+    32
+  ],
+  "n_bins": 3,
+  "n_seeds": 3,
+  "strata": {
+    "fast": {
+      "n_heads": 3024,
+      "median_half_life": 1.9820845127105713,
+      "min_half_life": 0.0009959557792171836,
+      "max_half_life": 3.568957805633545,
+      "layers_with_no_heads": 1,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 104
+    },
+    "middle": {
+      "n_heads": 3024,
+      "median_half_life": 6.6422438621521,
+      "min_half_life": 3.570024251937866,
+      "max_half_life": 12.610546112060547,
+      "layers_with_no_heads": 0,
+      "heads_per_layer_min": 2,
+      "heads_per_layer_max": 89
+    },
+    "slow": {
+      "n_heads": 3024,
+      "median_half_life": 28.956981658935547,
+      "min_half_life": 12.612332344055176,
+      "max_half_life": 29327.31640625,
+      "layers_with_no_heads": 1,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 105
+    }
+  },
+  "example_span": [
+    699,
+    1043,
+    345
+  ],
+  "n_records": 256,
+  "minutes": 18.8
+}

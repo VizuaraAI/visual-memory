@@ -1,0 +1,16 @@
+{
+  "model_id": "Zyphra/Zamba2-VL-7B",
+  "distances": [
+    0,
+    32,
+    64
+  ],
+  "n_records": 384,
+  "strata": [
+    "fast",
+    "middle",
+    "slow",
+    "all"
+  ],
+  "minutes": 21.5
+}

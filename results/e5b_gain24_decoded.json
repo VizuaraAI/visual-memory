@@ -1,0 +1,102 @@
+{
+  "tag": "gain24",
+  "chance": 0.125,
+  "strata": {
+    "fast": {
+      "predicted_median_half_life": 2.298658609390259,
+      "measured_half_life": 19.26,
+      "per_distance": [
+        {
+          "distance": 0,
+          "accuracy": 0.8177,
+          "p_value": 4.632476742333454e-106,
+          "n": 192
+        },
+        {
+          "distance": 2,
+          "accuracy": 0.8177,
+          "p_value": 4.632476742333454e-106,
+          "n": 192
+        },
+        {
+          "distance": 4,
+          "accuracy": 0.724,
+          "p_value": 2.2769141433190964e-81,
+          "n": 192
+        },
+        {
+          "distance": 8,
+          "accuracy": 0.6302,
+          "p_value": 2.2839301529066665e-60,
+          "n": 192
+        },
+        {
+          "distance": 16,
+          "accuracy": 0.5,
+          "p_value": 2.2886522782375067e-36,
+          "n": 192
+        },
+        {
+          "distance": 32,
+          "accuracy": 0.3594,
+          "p_value": 8.142118756716305e-17,
+          "n": 192
+        },
+        {
+          "distance": 64,
+          "accuracy": 0.2656,
+          "p_value": 1.1361304703083194e-07,
+          "n": 192
+        }
+      ]
+    },
+    "slow": {
+      "predicted_median_half_life": 16.351898193359375,
+      "measured_half_life": 26.29,
+      "per_distance": [
+        {
+          "distance": 0,
+          "accuracy": 0.9167,
+          "p_value": 1.1670331048790188e-137,
+          "n": 192
+        },
+        {
+          "distance": 2,
+          "accuracy": 0.8958,
+          "p_value": 2.242343605426993e-130,
+          "n": 192
+        },
+        {
+          "distance": 4,
+          "accuracy": 0.7917,
+          "p_value": 8.871966626495955e-99,
+          "n": 192
+        },
+        {
+          "distance": 8,
+          "accuracy": 0.7292,
+          "p_value": 1.2295811417823984e-82,
+          "n": 192
+        },
+        {
+          "distance": 16,
+          "accuracy": 0.6146,
+          "p_value": 3.5018686416460035e-57,
+          "n": 192
+        },
+        {
+          "distance": 32,
+          "accuracy": 0.4688,
+          "p_value": 1.8947475102757634e-31,
+          "n": 192
+        },
+        {
+          "distance": 64,
+          "accuracy": 0.3438,
+          "p_value": 4.601304185517795e-15,
+          "n": 192
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "model_id": "Zyphra/Zamba2-VL-7B",
+  "conditions": [
+    "intact",
+    "visual_all",
+    "prefill_matched",
+    "visual_all_zero",
+    "visual_early3_zero",
+    "visual_late3_zero"
+  ],
+  "distances": [
+    0,
+    32
+  ],
+  "n_bins": 10,
+  "n_seeds": 1,
+  "strata": {
+    "bin00": {
+      "n_heads": 908,
+      "median_half_life": 0.6970258951187134,
+      "min_half_life": 0.0009959557792171836,
+      "max_half_life": 1.3776295185089111,
+      "layers_with_no_heads": 19,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 45
+    },
+    "bin01": {
+      "n_heads": 907,
+      "median_half_life": 1.8440150022506714,
+      "min_half_life": 1.378471851348877,
+      "max_half_life": 2.2685933113098145,
+      "layers_with_no_heads": 9,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 74
+    },
+    "bin02": {
+      "n_heads": 907,
+      "median_half_life": 2.7507147789001465,
+      "min_half_life": 2.2687180042266846,
+      "max_half_life": 3.222468376159668,
+      "layers_with_no_heads": 6,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 47
+    },
+    "bin03": {
+      "n_heads": 907,
+      "median_half_life": 3.787454605102539,
+      "min_half_life": 3.222632646560669,
+      "max_half_life": 4.506721019744873,
+      "layers_with_no_heads": 2,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 49
+    },
+    "bin04": {
+      "n_heads": 907,
+      "median_half_life": 5.381224632263184,
+      "min_half_life": 4.50689697265625,
+      "max_half_life": 6.6422438621521,
+      "layers_with_no_heads": 4,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 43
+    },
+    "bin05": {
+      "n_heads": 907,
+      "median_half_life": 8.146761894226074,
+      "min_half_life": 6.64367151260376,
+      "max_half_life": 9.938055992126465,
+      "layers_with_no_heads": 4,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 35
+    },
+    "bin06": {
+      "n_heads": 907,
+      "median_half_life": 11.779305458068848,
+      "min_half_life": 9.948138236999512,
+      "max_half_life": 14.271851539611816,
+      "layers_with_no_heads": 5,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 52
+    },
+    "bin07": {
+      "n_heads": 907,
+      "median_half_life": 17.797340393066406,
+      "min_half_life": 14.282234191894531,
+      "max_half_life": 23.74928855895996,
+      "layers_with_no_heads": 5,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 44
+    },
+    "bin08": {
+      "n_heads": 907,
+      "median_half_life": 32.01927947998047,
+      "min_half_life": 23.752552032470703,
+      "max_half_life": 45.09824752807617,
+      "layers_with_no_heads": 11,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 59
+    },
+    "bin09": {
+      "n_heads": 908,
+      "median_half_life": 73.31915283203125,
+      "min_half_life": 45.0988655090332,
+      "max_half_life": 29327.31640625,
+      "layers_with_no_heads": 10,
+      "heads_per_layer_min": 0,
+      "heads_per_layer_max": 79
+    }
+  },
+  "example_span": [
+    699,
+    1043,
+    345
+  ],
+  "n_records": 768,
+  "minutes": 64.8
+}

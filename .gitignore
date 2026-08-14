@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.npz
+*.log
+*.aux
+*.out
+*.toc
+paper/*.synctex.gz
+docs/.vercel/
+docs/assets/film.mp4
+figures/outputs/.DS_Store
+.DS_Store

@@ -1,0 +1,86 @@
+{
+ "title": "A Memory That Only Looks Like One: A Hybrid Vision-Language Model Relays the Picture Rather Than Storing It",
+ "paper_type": "analysis (mechanistic interpretability of a deployed hybrid architecture, with one applied consequence)",
+ "summary": "The paper studies where visual information lives in Zamba2-VL, a hybrid vision-language model in which all 81 decoder layers carry a Mamba2 recurrent mixer and 13 additionally carry shared attention. Linear probes on random projections of the recurrent state show that object identity is highly decodable at the instant of writing (92.5% on the best layer, 12.5% chance) while count and position sit near chance, and that decodability collapses within a few tokens of the image. The authors compute a per-head half-life from the model's own A and gate statistics, then show through head stratification, visual key-value eviction with a matched pre-image text control, a probe sensitivity calibration, and a cross-run cache splice that what a probe recovers at distance is not retained content but content re-supplied by the attention channel. A behavioural experiment on visual key-value pruning shows the redundancy premise holds down to 25% retention but that the cost of harsher pruning grows with distance from the image. The authors report two negative results: the weight-derived horizon does not track the measured horizon across three scales, and the relay contrast failed to transfer to Granite 4.0 h-tiny.",
+ "central_claim": "In Zamba2-VL, the fixed-size recurrent state does not store the image beyond a few tokens; what a probe reads from it at distance is a fresh re-encoding relayed from the attention channel, and removing that channel's copy of the image collapses the readout below chance while a matched non-visual eviction moves it the other way.",
+ "strengths": [
+  "The core intervention design is genuinely strong for an interpretability paper: the eviction happens after the image is read and before any filler token, so the recurrent state is provably identical across conditions at that instant, and the fast-head readout at 32 tokens goes from 51.6% to 7.8% (Table 2) while slow heads at distance zero barely move (62.5% to 54.7%). That is a within-condition control, not just a baseline.",
+  "The matched pre-image text eviction (Tables 8 and 9) is the right control for the obvious objection that eviction perturbs cache length and softmax normalisation, and it moves the readout in the opposite direction (fastest decile 56.2% to 78.1% at d=0 under text eviction versus 56.2% to 18.8% under image eviction). A double dissociation is a much stronger argument than the usual single-direction ablation.",
+  "Section 6.2's probe-sensitivity calibration is an unusually thoughtful piece of methodology: the authors measure their own detection floor by attenuation-plus-substitution, find it at roughly alpha = 0.25, and then note the weights predict only 3.7% median retention at 32 tokens, i.e. below the floor. This turns a null-result hazard into a positive argument, and they correctly refuse to over-read it (Section 10 concedes the probe is a lower bound).",
+  "The splice experiment (Table 3) is clean and decisive within its scope: replacing all 81 recurrent states moves 0 of 100 answers, while 7 of 13 attention caches move 94 of 100, with Wilson intervals reported and 11 of 111 pairs excluded for a stated reason.",
+  "Rare intellectual honesty that reviewers should reward: Section 8 reports that the paper's own headline half-life prediction fails to track measurement across scales and moves in the opposite direction; Section 9 and Section 10 report that the model still answers at 37.5% at zero visual retention where the probe reads near chance, explicitly refusing the stronger claim; Appendix B reports the failed Granite transfer in full detail rather than omitting it.",
+  "Table 7 is a good-faith delineation of what is new against Jelassi et al., Merrill et al., Wen et al. and Arora et al., and the paper does not claim the well-known capacity result as its own."
+ ],
+ "weaknesses": [
+  {
+   "text": "The head stratification that drives the central 'inversion' result has an unaddressed analytic confound that sits inside Equation 1 itself. In S_t = S_{t-1} exp(Delta_t A) + Delta_t x_t B_t^T, the same Delta scales both the decay factor and the write gain. Heads with short predicted half-life are by construction heads that write with large amplitude every step. So 'fast heads decode best at distance' (Table 1, 61.7% versus 16.7%) and 'fast heads are hurt most by eviction' (r = 0.80, Section 6.1) are both exactly what you would predict from write-amplitude and probe signal-to-noise alone, with no relay mechanism required. The paper controls for depth (mean layer 32.2 versus 45.5) but never for write gain, which is the confound that actually matters. A stratification matching Delta while varying |A|, or per-head amplitude normalisation before probing, is missing.",
+   "severity": "major"
+  },
+  {
+   "text": "The train/test protocol for probes under the eviction conditions is never stated, and the paper's most rhetorically load-bearing numbers are below-chance readings (7.8% and 4.7% in Table 2, 5 correct of 64). If probes are fit on intact-condition features and applied to evicted features, systematic below-chance performance is the expected signature of covariate shift, not of absent information, and the eviction result would be substantially confounded. If probes are cross-validated within each condition, then a consistent 4.7% under 8-way choice is itself an anomaly demanding explanation. Section 3 says only that probes are 'ridge classifiers evaluated by block-grouped k-fold cross-validation' without specifying which condition supplies the folds. This is a one-sentence fix in the text but a large swing in how the result reads.",
+   "severity": "major"
+  },
+  {
+   "text": "Statistical power is thin relative to the size of the claims. Core eviction cells are n = 64 (roughly 6 points of binomial noise, as Table 9 concedes, with 2 of 20 cells falling the wrong way), probe sweeps are n = 120, behavioural pruning cells are n = 48. The dose-response r = 0.80 is computed over 10 decile points with no confidence interval; at n = 10 the 95% interval is roughly [0.35, 0.95], which is consistent with a much weaker relationship. Only the eviction contrast is repeated across seeds (Table 10, 3 projection bases); everything else, including the entire decay-curve collection and Figure 1, uses a single fixed basis.",
+   "severity": "major"
+  },
+  {
+   "text": "The generality evidence is the paper's weakest point and the authors know it. Three checkpoints from one vendor sharing one architecture family and one training recipe are not three independent tests. The one attempt at a second family (Granite 4.0 h-tiny) failed outright, with the probe at chance at distance zero on a task the model answers at 100%, and Appendix B honestly states the authors cannot distinguish an instrumental failure from a genuine architectural difference. The relay claim is therefore established for exactly one architecture family, and a reviewer cannot rule out that the failed transfer is evidence against the claim rather than an instrument bug.",
+   "severity": "major"
+  },
+  {
+   "text": "Contribution 1 as advertised in the abstract is not supported by the paper's own results. The abstract states the retention horizon 'is computable before any experiment' with 'nothing fitted' and gives medians of 6.6, 2.9 and 2.6 tokens, but Section 8 reports that predicted and measured half-lives move in opposite directions across the three scales (predicted 6.64/2.91/2.58 against measured 4.0/9.6/14.3), that the r = 0.973 agreement on the 7B does not replicate, and that the probe was never measuring retention in the first place. So the closed form is arithmetic that has been validated nowhere. The abstract should carry that qualification rather than leaving Section 8 to deliver it on page 8.",
+   "severity": "major"
+  },
+  {
+   "text": "The relay mechanism is asserted at finer grain than it is measured. 'Re-encoded afresh at every token' (Section 6.1 box) implies a specific per-token path from attention output through the residual stream into a downstream mixer's write, which Section 10 concedes was not traced. The evidence supports the weaker and less quotable statement that the readout at distance depends causally on the attention channel's copy of the image. Whether it is re-supplied every token, or once at the first post-image token and then carried, is not distinguished by any experiment here.",
+   "severity": "minor"
+  },
+  {
+   "text": "The large positive effect of text eviction (+29.7 points for the fastest decile, +14.7 mean at d=0) is explained only post hoc as removing content 'competing with the image for the residual stream'. The double-dissociation logic works only if the two interventions are otherwise matched, and the strong asymmetry in magnitude suggests cache-length manipulations have effects the paper has not characterised. A third control (evicting an equal number of random non-visual, non-recent positions, or evicting post-image filler) would tighten this considerably.",
+   "severity": "minor"
+  },
+  {
+   "text": "The practical consequence in Section 9 is the paper's stated payoff but is statistically the thinnest part. 'The redundancy premise survives to a quarter of entries' rests on deltas of 6.2, 0.0, 4.2 and 6.2 points at n = 48, which is indistinguishable from zero but also indistinguishable from a real 6-point cost. The 'triples between 0 and 512 at 5% retention' claim (10.4 to 33.3 points) comes from cells with roughly 14-point 95% intervals. The qualitative fan-out in Figure 5 is convincing; the specific multipliers quoted in the abstract and Contribution 6 are not.",
+   "severity": "major"
+  },
+  {
+   "text": "Appendix A is an empty section header on page 11 with its tables appearing on pages 12 and 13 under no clear heading, and no figure in the paper carries an error bar despite Wilson intervals being available and reported in Table 3. Figure 1 left, Figure 2, Figure 4 and Figure 5 all plot n = 48 to n = 120 point estimates as bare lines.",
+   "severity": "minor"
+  },
+  {
+   "text": "The 'full state' probe results are systematically misleading and the paper half-acknowledges it: 41,472 features on 120 trials means the aggregate 83.1% / 71.7% numbers are an artifact of overparameterisation rather than a measurement of the state. This is disclosed, but the aggregate numbers are still used as headline framing in Section 4 and Table 4, and comparability across collections is fragile as a result.",
+   "severity": "minor"
+  }
+ ],
+ "missing_experiment": "The decisive missing experiment is the one the authors name themselves in Section 10: run the same probe-plus-eviction protocol on a vision-language model with no attention layers at all (Cobra or VL-Mamba), or failing that on a second vision-language hybrid family. Without it, 'the recurrent channel relays rather than stores' cannot be separated from 'this particular checkpoint happens to route visual information through its 13 attention layers', and the failed Granite transfer leaves that ambiguity wide open. A close second, and the one I would actually run first because it is cheap: a head stratification that holds write gain (Delta) fixed while varying |A|, to establish that the inversion in Table 1 and the r = 0.80 dose-response are not simply write-amplitude effects, since Delta scales both the decay factor and the write term in the same equation.",
+ "format_audit": {
+  "ablation_table": "present",
+  "teaser_figure": "absent",
+  "error_bars": "present",
+  "pages": 14,
+  "verdict_vs_norms": "Well under ICLR norms on volume: 14 pages against a 25-page median, 5 figures against a mean of 11.5, 11 tables against a mean of 8.7. Control and ablation tables are present and are the paper's strongest asset (Tables 1, 2, 8, 9, 10). Uncertainty quantification is above the ICLR baseline in the tables (exact binomial p-values, Wilson intervals in Table 3, a 3-seed repeat in Table 10) but absent from every one of the 5 figures, which plot n = 48 to n = 120 estimates as bare lines. No page-1 teaser, which is common enough at ICLR (10.6%) to be a non-issue. The thinness is not padding-related: this paper would be stronger with 8 more pages of the controls its own weaknesses demand, not with more prose."
+ },
+ "venue_fit": {
+  "verdict": "strong",
+  "reasoning": "Mechanistic interpretability of a deployed architecture sits squarely in ICLR's core, and the specific intersection of state-space/hybrid architecture analysis, vision-language models and KV-cache pruning maps onto several of the venue's largest topic clusters. The methodological register (probes paired with interventions, activation patching, causal mediation, explicit detection-floor calibration) is exactly what ICLR reviewers in this area expect and reward. The paper is also unusually well written for the venue, and its honesty about negative results reads as credibility rather than weakness."
+ },
+ "scores": {
+  "rigor": 4,
+  "novelty": 6,
+  "clarity_impact": 5,
+  "confidence_1to5": 4
+ },
+ "avg_score": 5,
+ "what_would_move_to_accept": [
+  "Resolve the Delta confound. Re-run the stratification holding write gain fixed while varying |A| (or normalise per-head amplitude before projection), and report whether the Table 1 inversion and the r = 0.80 dose-response survive. This is the single objection most likely to sink the paper and it is answerable with the existing pipeline. Effort: about 1 week, no new model runs beyond re-probing cached states.",
+  "State the probe train/test protocol under eviction explicitly, and if probes are currently transferred across conditions, re-fit them within condition. If the below-chance readings survive within-condition cross-validation, say so prominently, because that is a much stronger result than the paper currently gets credit for. Effort: 1 to 3 days.",
+  "Raise n on the load-bearing cells. Take the eviction contrast and the pruning behavioural sweep from n = 64 and n = 48 to at least n = 256, and put confidence intervals on every figure. Also report a bootstrap interval on the r = 0.80 correlation, which is currently 10 points with no uncertainty. Effort: about 1 week of compute.",
+  "Add a second vision-language hybrid family, or the attention-free VLM test (Cobra or VL-Mamba, which needs the read operator ported to Mamba1). Even a partial result here converts the paper from a single-model case study into a claim about hybrids. This is the highest-value item and the most expensive. Effort: 3 to 6 weeks including the port.",
+  "Add a third eviction control (random non-visual positions, or post-image filler positions) so the double dissociation does not rest on a single alternative condition whose large positive effect is itself unexplained. Effort: a few days.",
+  "Rewrite the abstract's second claim to carry the Section 8 caveat inline. As written, 'computable before any experiment, with nothing fitted' will read to most reviewers as a validated prediction, and discovering on page 8 that it does not track measurement at two of three scales will cost more goodwill than stating it upfront. Effort: one paragraph.",
+  "Soften 're-encoded afresh at every token' to what the interventions actually establish, or run the temporal-resolution experiment (evict at k tokens after the image for varying k) that would justify the stronger phrasing. Effort: a few days for the experiment."
+ ],
+ "accept_probability_pct": 28,
+ "calibration_note": "An average of 5.0 lands at the bottom of the 5.0-5.5 band (31.6% historical accept rate); I shade slightly below to 28% because the single-family scope and the n = 48 to n = 64 cell sizes are the kind of weakness that pulls a wavering reviewer down rather than up, and because the paper's own Section 8 negative result invalidates one of its six advertised contributions. At IJCAI or AAAI I would shift this a band down to roughly 15%. This is genuinely borderline: a rigor-focused reviewer who fixates on the Delta confound could reasonably score 3, while a reviewer who weights the intervention design and the intellectual honesty could reasonably score 7, so reviewer-assignment noise plausibly dominates the outcome here."
+}

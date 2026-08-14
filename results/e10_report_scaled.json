@@ -1,0 +1,84 @@
+{
+  "model_id": "Zyphra/Zamba2-VL-7B",
+  "family": "identity",
+  "n_pairs": 100,
+  "dropped_for_length": 0,
+  "dropped_for_baseline": 11,
+  "attempts": 111,
+  "swap_verified": "100/100",
+  "summary": {
+    "none": {
+      "n": 100,
+      "follows_host": 100,
+      "follows_donor": 0,
+      "host_rate": 1.0,
+      "donor_rate": 0.0,
+      "n_layers_swapped": 0
+    },
+    "recurrent": {
+      "n": 100,
+      "follows_host": 100,
+      "follows_donor": 0,
+      "host_rate": 1.0,
+      "donor_rate": 0.0,
+      "n_layers_swapped": 0
+    },
+    "attention_1": {
+      "n": 100,
+      "follows_host": 100,
+      "follows_donor": 0,
+      "host_rate": 1.0,
+      "donor_rate": 0.0,
+      "n_layers_swapped": 1
+    },
+    "attention_3": {
+      "n": 100,
+      "follows_host": 98,
+      "follows_donor": 0,
+      "host_rate": 0.98,
+      "donor_rate": 0.0,
+      "n_layers_swapped": 3
+    },
+    "attention_7": {
+      "n": 100,
+      "follows_host": 4,
+      "follows_donor": 94,
+      "host_rate": 0.04,
+      "donor_rate": 0.94,
+      "n_layers_swapped": 7
+    },
+    "attention_all": {
+      "n": 100,
+      "follows_host": 0,
+      "follows_donor": 98,
+      "host_rate": 0.0,
+      "donor_rate": 0.98,
+      "n_layers_swapped": 13
+    },
+    "attention_early3": {
+      "n": 100,
+      "follows_host": 94,
+      "follows_donor": 1,
+      "host_rate": 0.94,
+      "donor_rate": 0.01,
+      "n_layers_swapped": 3
+    },
+    "attention_late3": {
+      "n": 100,
+      "follows_host": 100,
+      "follows_donor": 0,
+      "host_rate": 1.0,
+      "donor_rate": 0.0,
+      "n_layers_swapped": 3
+    },
+    "both": {
+      "n": 100,
+      "follows_host": 0,
+      "follows_donor": 100,
+      "host_rate": 0.0,
+      "donor_rate": 1.0,
+      "n_layers_swapped": 13
+    }
+  },
+  "minutes": 68.4
+}

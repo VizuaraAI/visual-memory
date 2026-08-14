@@ -1,0 +1,126 @@
+{
+  "tag": "fine1p2",
+  "families": [
+    {
+      "family": "identity",
+      "n_records": 1440,
+      "per_distance": [
+        {
+          "distance": -1,
+          "is_control": true,
+          "probe_accuracy": 0.125,
+          "p_value": 0.5412558439644811,
+          "n": 120,
+          "zero_shot_accuracy": 0.125
+        },
+        {
+          "distance": 0,
+          "is_control": false,
+          "probe_accuracy": 0.8333,
+          "p_value": 1.0300750573726979e-69,
+          "n": 120,
+          "behaviour_accuracy": 0.9,
+          "zero_shot_accuracy": 0.1167,
+          "permutation_mean": 0.1117,
+          "permutation_max": 0.1333
+        },
+        {
+          "distance": 1,
+          "is_control": false,
+          "probe_accuracy": 0.7083,
+          "p_value": 3.934951350129454e-49,
+          "n": 120,
+          "behaviour_accuracy": 0.825,
+          "zero_shot_accuracy": 0.1083
+        },
+        {
+          "distance": 2,
+          "is_control": false,
+          "probe_accuracy": 0.7417,
+          "p_value": 3.481638854993344e-54,
+          "n": 120,
+          "behaviour_accuracy": 0.8333,
+          "zero_shot_accuracy": 0.1
+        },
+        {
+          "distance": 4,
+          "is_control": false,
+          "probe_accuracy": 0.5917,
+          "p_value": 1.5663244482723095e-33,
+          "n": 120,
+          "behaviour_accuracy": 0.7917,
+          "zero_shot_accuracy": 0.1
+        },
+        {
+          "distance": 8,
+          "is_control": false,
+          "probe_accuracy": 0.575,
+          "p_value": 1.507236507089177e-31,
+          "n": 120,
+          "behaviour_accuracy": 0.7167,
+          "zero_shot_accuracy": 0.1167
+        },
+        {
+          "distance": 12,
+          "is_control": false,
+          "probe_accuracy": 0.5167,
+          "p_value": 4.59339778321499e-25,
+          "n": 120,
+          "behaviour_accuracy": 0.7,
+          "zero_shot_accuracy": 0.125
+        },
+        {
+          "distance": 16,
+          "is_control": false,
+          "probe_accuracy": 0.45,
+          "p_value": 1.6328613719105333e-18,
+          "n": 120,
+          "behaviour_accuracy": 0.6667,
+          "zero_shot_accuracy": 0.1
+        },
+        {
+          "distance": 24,
+          "is_control": false,
+          "probe_accuracy": 0.3417,
+          "p_value": 7.502357454957337e-10,
+          "n": 120,
+          "behaviour_accuracy": 0.6833,
+          "zero_shot_accuracy": 0.125
+        },
+        {
+          "distance": 32,
+          "is_control": false,
+          "probe_accuracy": 0.325,
+          "p_value": 9.562509938125048e-09,
+          "n": 120,
+          "behaviour_accuracy": 0.7083,
+          "zero_shot_accuracy": 0.1417
+        },
+        {
+          "distance": 48,
+          "is_control": false,
+          "probe_accuracy": 0.3,
+          "p_value": 3.301052598568588e-07,
+          "n": 120,
+          "behaviour_accuracy": 0.7167,
+          "zero_shot_accuracy": 0.1333
+        },
+        {
+          "distance": 64,
+          "is_control": false,
+          "probe_accuracy": 0.3417,
+          "p_value": 7.502357454957337e-10,
+          "n": 120,
+          "behaviour_accuracy": 0.7167,
+          "zero_shot_accuracy": 0.1333
+        }
+      ],
+      "decay": {
+        "half_life_tokens": 33.7,
+        "tau_tokens": 48.6,
+        "amplitude_at_zero": 0.5262
+      },
+      "chance": 0.125
+    }
+  ]
+}
