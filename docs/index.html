@@ -112,6 +112,9 @@
     border:1px solid var(--line2); border-radius:99px; padding:6px 12px; cursor:pointer;
   }
   .replay:hover{color:var(--slate); border-color:var(--slate)}
+  /* the first figure has its "question" label in the top-right corner,
+     so its replay button sits bottom-right instead */
+  #anim-channels .replay{top:auto; bottom:10px}
   svg text{font-family:var(--sans)}
   svg .num{font-family:var(--mono)}
   .statline{display:flex; flex-wrap:wrap; gap:14px 40px; margin:26px 0}
@@ -152,7 +155,8 @@
       <a href="https://github.com/VizuaraAI/visual-memory" class="hidesm gh">
         <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         GitHub</a>
-      <a href="assets/paper-extended.pdf?v=4" class="pill">Paper&nbsp;PDF</a>
+      <a href="assets/paper-conference.pdf?v=5" class="pill">ICLR&nbsp;paper</a>
+      <a href="assets/paper-extended.pdf?v=5" class="pill">Extended&nbsp;paper</a>
     </div>
   </div>
   <div id="progress"></div>
@@ -178,14 +182,14 @@
   <div class="toc" role="navigation" aria-label="Table of contents">
     <div class="toc-title">Contents</div>
     <ol>
-      <li><a href="#two-memories"><span class="n">1</span>Two kinds of memory</a></li>
-      <li><a href="#measure"><span class="n">2</span>How do you measure what a memory holds?</a></li>
-      <li><a href="#gist"><span class="n">3</span>The state knows the gist</a></li>
-      <li><a href="#schedule"><span class="n">4</span>The forgetting schedule in the weights</a></li>
-      <li><a href="#strata"><span class="n">5</span>Split the heads by decay</a></li>
-      <li><a href="#deletion"><span class="n">6</span>Delete attention's copy</a></li>
-      <li><a href="#swap"><span class="n">7</span>The swap that settles it</a></li>
-      <li><a href="#relay"><span class="n">8</span>What the recurrent state is for</a></li>
+      <li><a href="#two-memories"><span class="n">1</span>A picture, two kinds of memory</a></li>
+      <li><a href="#measure"><span class="n">2</span>A probe reads what each memory holds</a></li>
+      <li><a href="#gist"><span class="n">3</span>At writing time, the state knows the gist</a></li>
+      <li><a href="#schedule"><span class="n">4</span>The weights say it must fade fast</a></li>
+      <li><a href="#strata"><span class="n">5</span>Yet it stays readable too long</a></li>
+      <li><a href="#deletion"><span class="n">6</span>Delete attention's copy: it vanishes</a></li>
+      <li><a href="#swap"><span class="n">7</span>Swap memories: answers follow attention</a></li>
+      <li><a href="#relay"><span class="n">8</span>A relay, not an archive</a></li>
       <li><a href="#film"><span class="n">9</span>The film</a></li>
       <li><a href="#prior"><span class="n">10</span>Where this sits in prior work</a></li>
       <li><a href="#limits"><span class="n">11</span>What this does not show</a></li>
@@ -218,7 +222,7 @@
   which should be impossible. Third, one deletion experiment resolves the
   contradiction, and settles where the picture really lives.</p>
 
-  <h2 id="two-memories">Two kinds of memory</h2>
+  <h2 id="two-memories">A picture enters a model with two kinds of memory</h2>
 
   <p>One diagram explains everything that follows, so it is worth thirty
   seconds. As tokens stream in, the attention layers append one key-value entry
@@ -240,7 +244,7 @@
 
 <div class="art">
 
-  <h2 id="measure">How do you measure what a memory holds?</h2>
+  <h2 id="measure">A linear probe reads what each memory actually holds</h2>
 
   <p>This measurement is easy to get wrong, so the design of the experiment
   matters. Our basic trial has three parts in a row: a COCO photograph, which becomes roughly 400 visual tokens;
@@ -329,7 +333,7 @@
 
 <div class="art">
 
-  <h2 id="schedule">The forgetting schedule is written in the weights</h2>
+  <h2 id="schedule">The weights say that gist must fade within a few tokens</h2>
 
   <p>Now let text flow past the image. In our trials this is the filler: the
   <span class="num">d</span> tokens of neutral prose between the image and the
@@ -390,7 +394,7 @@
   quarter of the time. Either the arithmetic is wrong, or something is refilling
   the state.</p>
 
-  <h2 id="strata">Split the heads by how fast they should forget</h2>
+  <h2 id="strata">But the state stays readable long after it should be empty</h2>
 
   <p>Here is a test that can tell those two possibilities apart. Every one of
   the model's 9,072 heads has its own predicted half-life, so we can sort them.
@@ -469,7 +473,7 @@
   probe reads at distance cannot be retention. Something else must be writing
   the image into the state, over and over, long after the image has passed.</p>
 
-  <h2 id="deletion">Delete attention's copy, and see what happens</h2>
+  <h2 id="deletion">Delete attention's copy, and the impossible memory vanishes</h2>
 
   <p>Only one component of this model still holds the image at distance: the
   attention cache. So we ran the deletion that separates storing from relaying.
@@ -557,7 +561,7 @@
 
 <div class="art">
 
-  <h2 id="swap">The swap that settles it</h2>
+  <h2 id="swap">Swap the two memories, and the answers follow attention</h2>
 
   <p>One experiment remains, the most direct one. Run the model on two different
   images, pause both runs at the same point, and physically exchange one memory
@@ -594,7 +598,7 @@
   tokens, and is then rewritten from the attention channel, which the swap never
   touched. The two experiments agree on one mechanism.</p>
 
-  <h2 id="relay">So what is the recurrent state for?</h2>
+  <h2 id="relay">The recurrent state is a relay, not an archive</h2>
 
   <p>It is not a memory of the image. It is a working summary of the image's
   gist, held for a few tokens at a time and continuously refreshed from the
@@ -650,7 +654,7 @@
   <p>The whole argument in seven minutes, narrated over animations.</p>
 
   <video controls preload="metadata" poster="assets/f2_relay.png">
-    <source src="assets/film.mp4?v=5" type="video/mp4">
+    <source src="assets/film.mp4?v=6" type="video/mp4">
   </video>
 
   <h2 id="prior">Where this sits in prior work</h2>
@@ -801,8 +805,8 @@ paper/        the paper sources</pre>
 
   <p class="aside">Model: Zamba2-VL-7B (Apache-2.0) with its 2.7B and 1.2B
   siblings. Trials from COCO val2017. Total compute under $30 of rented H100
-  time. <a href="assets/paper-extended.pdf?v=4">Extended paper</a> &middot;
-  <a href="assets/paper-conference.pdf?v=4">conference version</a>.</p>
+  time. <a href="assets/paper-extended.pdf?v=5">Extended paper</a> &middot;
+  <a href="assets/paper-conference.pdf?v=5">conference version</a>.</p>
 
 </div>
 
@@ -810,7 +814,7 @@ paper/        the paper sources</pre>
   <div class="art">
     <img src="assets/vizuara-logo.png" alt="Vizuara">
     <div>Vizuara Research &middot; August 2026 &middot;
-      <a href="assets/paper-extended.pdf?v=4">paper</a> &middot;
+      <a href="assets/paper-extended.pdf?v=5">paper</a> &middot;
       <a href="#film">film</a> &middot;
       <a href="https://github.com/VizuaraAI/visual-memory">github</a></div>
   </div>
