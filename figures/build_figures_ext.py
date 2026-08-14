@@ -205,7 +205,7 @@ def fig_retention_curves():
     thirds = np.array_split(order, 3)
     ends = []
     for idx, (name, colour) in zip(thirds, (("fast", S.RED),
-                                            ("middle", S.MUTED),
+                                            ("middle", S.SHELF),
                                             ("slow", S.BLUE))):
         curve = np.exp(-np.median(rate[idx]) * ks)
         left.plot(ks, curve * 100, color=colour, lw=1.9, zorder=3)
