@@ -132,6 +132,19 @@
   ul.lims{max-width:none; padding-left:21px}
   ul.lims li{margin:12px 0}
   video{width:100%; border:1px solid var(--line); border-radius:6px; background:#000; display:block}
+  /* click-to-load YouTube facade: no player bytes until the reader presses play */
+  .filmframe{position:relative; aspect-ratio:16/9; width:100%; cursor:pointer;
+    border:1px solid var(--line); border-radius:6px; overflow:hidden; background:#000}
+  .filmframe img{width:100%; height:100%; object-fit:cover; display:block}
+  .filmframe iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .filmframe .playbtn{position:absolute; left:50%; top:50%; width:84px; height:84px;
+    transform:translate(-50%,-50%); border-radius:50%; background:rgba(22,19,13,.82);
+    box-shadow:0 6px 24px rgba(20,16,8,.35); transition:background .15s}
+  .filmframe .playbtn::after{content:''; position:absolute; left:55%; top:50%;
+    transform:translate(-50%,-50%); border-style:solid; border-width:15px 0 15px 25px;
+    border-color:transparent transparent transparent #fdfcf9}
+  .filmframe:hover .playbtn{background:var(--slate)}
+  .filmframe.live{cursor:default}
   pre{background:var(--sink); border:1px solid var(--line); border-radius:6px; padding:16px 18px; overflow-x:auto; font-size:14px; line-height:1.6; font-family:var(--mono)}
   table{border-collapse:collapse; width:100%; background:var(--panel); font-size:16px}
   .tablewrap{overflow-x:auto; margin:26px 0; border:1px solid var(--line); border-radius:6px}
@@ -653,9 +666,29 @@
 
   <p>The whole argument in eight and a half minutes, narrated over animations.</p>
 
-  <video controls preload="metadata" poster="assets/film-poster.jpg">
-    <source src="assets/film.mp4?v=7" type="video/mp4">
-  </video>
+  <div class="filmframe" id="filmframe" role="button" tabindex="0"
+       aria-label="Play the film (opens the YouTube player)">
+    <img src="assets/film-poster.jpg" alt="The film: where does the picture live in a hybrid Mamba model?">
+    <span class="playbtn" aria-hidden="true"></span>
+  </div>
+  <script>
+  (function(){
+    const f = document.getElementById('filmframe');
+    const play = () => {
+      const i = document.createElement('iframe');
+      i.src = 'https://www.youtube-nocookie.com/embed/SJE8eMN3yPk?autoplay=1&rel=0';
+      i.title = 'Where Does the Picture Live in a Hybrid Mamba Model?';
+      i.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      i.allowFullscreen = true;
+      f.replaceChildren(i);
+      f.classList.add('live');
+    };
+    f.addEventListener('click', play);
+    f.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+    });
+  })();
+  </script>
 
   <h2 id="prior">Where this sits in prior work</h2>
 
