@@ -36,7 +36,7 @@ from matplotlib import patheffects as _pe
 
 def punch(size: float = 2.6):
     """Stroke a text label in the surface colour so it reads over rules."""
-    return [_pe.withStroke(linewidth=size, foreground="#fdfcf8")]
+    return [_pe.withStroke(linewidth=size, foreground="#ffffff")]
 
 # Website palette (validated).
 BLUE = "#155e8c"    # slate: untouched / primary
@@ -51,7 +51,7 @@ INK2 = "#3a352b"
 MUTED = "#6d665a"
 FAINT = "#a49c8c"
 RULE = "#e7e2d5"
-PAPERBG = "#fdfcf8"
+PAPERBG = "#ffffff"
 
 CHANCE = 12.5
 
